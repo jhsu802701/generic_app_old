@@ -6,11 +6,11 @@ require 'generic_app/version'
 Gem::Specification.new do |spec|
   spec.name          = "generic_app"
   spec.version       = GenericApp::VERSION
-  spec.authors       = ["TODO: Write your name"]
-  spec.email         = ["TODO: Write your email address"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.authors       = ["Jason Hsu"]
+  spec.email         = ["rubyist@jasonhsu.com"]
+  spec.summary       = %q{Save time by instantly create a generic Rails app.}
+  spec.description   = %q{Instead of creating your Rails app from scratch, start with a generic app.}
+  spec.homepage      = "https://github.com/jhsu802701/generic_app"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
