@@ -1,4 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'generic_app'
-GenericApp.create
+
+generic_app = GenericApp.new
+subdir_name = gets.chomp
+generic_app.create(subdir_name)

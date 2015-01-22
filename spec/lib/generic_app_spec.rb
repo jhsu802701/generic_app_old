@@ -2,15 +2,14 @@ require 'spec_helper'
 require 'generic_app'
 
 describe GenericApp do
-  dir_home = `echo $HOME`.strip # /home/<username>
-  dir_test_parent = "#{dir_home}/test_gem" # /home/<username>/test_gem
-  system("mkdir #{dir_test_parent}")
-  
-  it "should clone the Rails tutorial - all mode" do
-    cd_dir_execute(dir_test_parent, "rm -rf test_all")
-    cd_dir_execute(dir_test_parent, "generic_app")
-    input1 = String.new
-    input1.stub!(:gets).and_return("test1\n")
+  it "should copy the Rails tutorial" do
+    system("rm -rf tmp")
+    generic_app = GenericApp.new
+    generic_app.create("tmp")
+    
+    #@generic_app.should_receive(:puts).with("phrase")
+    #@mirror.echo
+    
   end
 end
 
