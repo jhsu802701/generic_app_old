@@ -6,10 +6,6 @@ describe GenericApp do
     system("rm -rf tmp")
     generic_app = GenericApp.new
     generic_app.create("tmp")
-    
-    #@generic_app.should_receive(:puts).with("phrase")
-    #@mirror.echo
-    
   end
 end
 

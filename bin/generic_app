@@ -3,5 +3,10 @@
 require 'generic_app'
 
 generic_app = GenericApp.new
+puts "***********************"
+puts "Welcome to Generic App!"
+puts
+puts "DEFAULT VALUE: sample_app_3rd_edition"
+puts "Enter the directory name you wish to use for your generic app:"
 subdir_name = gets.chomp
 generic_app.create(subdir_name)
