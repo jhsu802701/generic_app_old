@@ -1,0 +1,160 @@
+MIGRATIONS
+db/migrate
+  20141014183645_create_users.rb
+    create_table :users (name, email)
+  20141014205756_add_index_to_users_email.rb
+    add_index :users, :email
+  20141014234032_add_password_digest_to_users.rb
+    add_column :users, :password_digest, :string
+  20141030174712_add_remember_digest_to_users.rb
+    add_column :users, :remember_digest, :string
+  20141104004736_add_admin_to_users.rb
+    add_column :users, :admin, :boolean, default: false
+  20141106193737_add_activation_to_users.rb
+    add_column :users, :activation_digest, :string
+    add_column :users, :activated, :boolean, default: false
+    add_column :users, :activated_at, :datetime
+  20141107180258_add_reset_to_users.rb
+    add_column :users, :reset_digest, :string
+    add_column :users, :reset_sent_at, :datetime
+
+ACCOUNT ACTIVATIONS
+app/controllers/account_activations_controller.rb
+  def edit
+app/helpers/account_activations_helper.rb
+config/routes.rb
+  get 'account_activations/edit'
+  resources :account_activations, only: [:edit]
+
+APPLICATION
+app/controllers/application_controller.rb
+  include SessionsHelper
+app/helpers/application_helper.rb
+  def full_title(page_title = '')
+
+PASSWORD RESETS
+app/controllers/password_resets_controller.rb
+  before_action :get_user,         only: [:edit, :update]
+  before_action :valid_user,       only: [:edit, :update]
+  before_action :check_expiration, only: [:edit, :update]
+  def new
+  def create
+  def edit
+  def update
+  private
+    def user_params
+    def both_passwords_blank?
+    def get_user
+    def valid_user
+    def check_expiration
+app/views/password_resets
+  edit.html.erb
+  new.html.erb
+config/routes.rb
+  get 'password_resets/new'
+  get 'password_resets/edit'
+  resources :password_resets,     only: [:new, :create, :edit, :update]
+
+SESSIONS
+app/controllers/sessions_controller.rb
+  def new
+  def create
+  def destroy
+app/views/sessions/new.html.erb
+config/routes.rb
+  get 'sessions/new'
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
+
+STATIC PAGES
+app/controllers/static_pages_controller.rb
+  def home
+  def help
+  def about
+  def contact
+app/views/static_pages
+  about.html.erb
+  contact.html.erb
+  help.html.erb
+  home.html.erb
+config/routes.rb
+  root                'static_pages#home'
+  get    'help'    => 'static_pages#help'
+  get    'about'   => 'static_pages#about'
+  get    'contact' => 'static_pages#contact'
+
+USERS
+app/controllers/users_controller.rb
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :correct_user,   only: [:edit, :update]
+  before_action :admin_user,     only: :destroy
+  def index
+  def show
+  def new
+  def create
+  def edit
+  def update
+  def destroy
+  private
+    def user_params
+    def logged_in_user
+    def correct_user
+    def admin_user
+app/models/user.rb
+  attr_accessor :remember_token, :activation_token, :reset_token
+  before_save   :downcase_email
+  before_create :create_activation_digest
+  validates :name,  presence: true, length: { maximum: 50 }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, length: { maximum: 255 },
+                    format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: { case_sensitive: false }
+  has_secure_password
+  validates :password, length: { minimum: 6 }, allow_blank: true
+  def User.digest(string)
+  def User.new_token
+  def remember
+  def forget
+  def authenticated?(attribute, token)
+  def activate
+  def send_activation_email
+  def create_reset_digest
+  def send_password_reset_email
+  def password_reset_expired?
+  private
+    def downcase_email
+    def create_activation_digest
+app/views/users
+  edit.html.erb
+  index.html.erb
+  new.html.erb
+  show.html.erb
+  _user.html.erb
+database params:
+  users (name, email, index, password_digest, remember_digest, admin, 
+    activation_digest, activated, activated_at, reset_digest, reset_sent_at)
+config/routes.rb
+  get    'signup'  => 'users#new'
+  resources :users
+
+MAILERS
+app/mailers/user_mailer.rb
+  def account_activation(user)
+  def password_reset(user)
+app/views/user_mailer
+  account_activation.html.erb
+  account_activation.text.erb
+  password_reset.html.erb
+  password_reset.text.erb
+
+LAYOUTS
+app/views/layouts
+  application.html.erb
+  _footer.html.erb
+  _header.html.erb
+  _shim.html.erb
+
+SHARED VIEWS
+app/views/shared
+  _error_messages.html.erb
