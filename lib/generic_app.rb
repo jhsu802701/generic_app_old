@@ -26,7 +26,7 @@ class GenericApp
       str_guard_new = "all_on_start: true"
       StringInFile.replace(str_guard_orig, str_guard_new, "#{subdir_name}/Guardfile")
       system("cp -r #{dir_main}/to_add/* #{subdir_name}")
-      system("cd #{subdir_name} && sh list_files_mvc.sh >> notes/mvc_files.txt")
+      system("cd #{subdir_name} && sh list_files.sh >> notes/list_files.txt")
       
       system("cd #{subdir_name} && rm -rf .git")
       system("cd #{subdir_name} && git init")

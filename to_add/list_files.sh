@@ -18,3 +18,6 @@ ls -R1 -I concerns app/views
 
 echo
 ls -R1 -I concerns db
+
+echo
+ls -R1 -I concerns test
