@@ -22,12 +22,30 @@ class GenericApp
     t1 = Thread.new { 
       puts "*******************************"
       puts "Modifying the Rails source code"
+      
+      # Changing settings
       str_guard_orig = "all_on_start: false"
       str_guard_new = "all_on_start: true"
       StringInFile.replace(str_guard_orig, str_guard_new, "#{subdir_name}/Guardfile")
+      
+      # Advise users to use a password management program when choosing a password
+      str1 = "</h1>"
+      str2a = "</h1>"
+      str2b = "\nUsing the same password for all of your accounts is risky."
+      str2b += "\nLimiting yourself to passwords that you can easily remember is risky."
+      str2b += "\nYou should use a password management program like <a href='http://www.keepassx.org/'>KeePassX</a>"
+      str2b += "\nto create much better passwords AND store them in encrypted form.<br>"
+      str2 = str2a + str2b
+      StringInFile.replace(str1, str2, "#{subdir_name}/app/views/users/new.html.erb")
+      StringInFile.replace(str1, str2, "#{subdir_name}/app/views/users/edit.html.erb")
+
+      # Adding notes and special scripts
       system("cp -r #{dir_main}/to_add/* #{subdir_name}")
+      
+      # Adding automated list of files
       system("cd #{subdir_name} && sh list_files.sh >> notes/list_files.txt")
       
+      # Initializing Git
       system("cd #{subdir_name} && rm -rf .git")
       system("cd #{subdir_name} && git init")
       }
