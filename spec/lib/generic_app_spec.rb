@@ -23,8 +23,15 @@ describe GenericApp do
       expect(StringInPath.present("Follower", "tmp")).to eq(false)
       expect(StringInPath.present("relationship", "tmp")).to eq(false)
       expect(StringInPath.present("Relationship", "tmp")).to eq(false)
+      
       expect(StringInFile.present("rake", "tmp/setup.sh")).to eq(true)
       expect(StringInFile.present("all_on_start: true", "tmp/Guardfile")).to eq(true)
+      
+      puts "\nChecking for suggestion to use password management software"
+      expect(StringInFile.present("KeePassX", "tmp/app/views/users/new.html.erb")).to eq(true)
+      expect(StringInFile.present("KeePassX", "tmp/app/views/users/edit.html.erb")).to eq(true)
+      expect(StringInFile.present("KeePassX", "tmp/app/views/password_resets/new.html.erb")).to eq(true)
+      expect(StringInFile.present("KeePassX", "tmp/app/views/password_resets/edit.html.erb")).to eq(true)
      }
     t1.join
     

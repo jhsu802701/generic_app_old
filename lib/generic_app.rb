@@ -38,6 +38,8 @@ class GenericApp
       str2 = str2a + str2b
       StringInFile.replace(str1, str2, "#{subdir_name}/app/views/users/new.html.erb")
       StringInFile.replace(str1, str2, "#{subdir_name}/app/views/users/edit.html.erb")
+      StringInFile.replace(str1, str2, "#{subdir_name}/app/views/password_resets/new.html.erb")
+      StringInFile.replace(str1, str2, "#{subdir_name}/app/views/password_resets/edit.html.erb")
 
       # Adding notes and special scripts
       system("cp -r #{dir_main}/to_add/* #{subdir_name}")
