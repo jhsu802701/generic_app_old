@@ -28,6 +28,7 @@ apps that were not created with this generic_app Ruby gem.)
 to generate and store secure passwords
 3.  Outlines of the MVC, test suite, and database seeding process in the 
 notes folder
+4.  Guard automatically runs tests upon startup.
 
 To execute the Bash (*.sh) scripts, enter the command "sh (name of script)".  
 The Bash scripts provided are:

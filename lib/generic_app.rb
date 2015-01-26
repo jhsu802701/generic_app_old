@@ -23,7 +23,7 @@ class GenericApp
       puts "*******************************"
       puts "Modifying the Rails source code"
       
-      # Changing settings
+      # Changing Guardfile settings
       str_guard_orig = "all_on_start: false"
       str_guard_new = "all_on_start: true"
       StringInFile.replace(str_guard_orig, str_guard_new, "#{subdir_name}/Guardfile")
