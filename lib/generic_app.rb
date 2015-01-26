@@ -45,7 +45,7 @@ class GenericApp
       system("cp -r #{dir_main}/to_add/* #{subdir_name}")
       
       # Adding automated list of files
-      system("cd #{subdir_name} && sh list_files.sh >> notes/list_files.txt")
+      system("cd #{subdir_name} && sh list_files.sh")
       
       # Initializing Git
       system("cd #{subdir_name} && rm -rf .git")
