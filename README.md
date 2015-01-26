@@ -34,25 +34,25 @@ time" by omitting testing.  Using the GenericApp gem allows you to have all of t
 generic app as soon as you start it.  It's a shortcut that actually complies with best practices.
 <br><br>
 The original Rails Tutorial Sample App provides the following features:
-1.  Static pages
-2.  Tests
-3.  Automated tests through Guard
-4.  Twitter bootstrap
-5.  Databases: SQLite3 for development and PostgreSQL for production
-6.  Ready for Heroku deployment
-7.  User functionality: includes hashed passwords, administrative users, 
+1. Static pages
+2. Tests
+3. Automated tests through Guard
+4. Twitter bootstrap
+5. Databases: SQLite3 for development and PostgreSQL for production
+6. Ready for Heroku deployment
+7. User functionality: includes hashed passwords, administrative users, 
 account activations, and password resets
 
 This generic Rails app provides the above features PLUS these additional 
 features:
-1.  Bash scripts in the root directory that allow you to perform routine 
+1. Bash scripts in the root directory that allow you to perform routine 
 tasks in only one step.  (These scripts are likely to be useful in Rails 
 apps that were not created with this generic_app Ruby gem.)
-2.  Recommendations that the user make use of password management software 
+2. Recommendations that the user make use of password management software 
 to generate and store secure passwords
-3.  Outlines of the MVC, test suite, and database seeding process in the 
+3. Outlines of the MVC, test suite, and database seeding process in the 
 notes folder
-4.  Guard automatically runs tests upon startup.
+4. Guard automatically runs tests upon startup.
 
 ## Contributing
 
