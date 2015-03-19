@@ -52,11 +52,5 @@ class GenericApp
       system("cd #{subdir_name} && git init")
       }
     t1.join
-    puts "*************************************************************"
-    puts "Enter the following commands to set up and test your new app:"
-    puts "cd #{subdir_name}"
-    puts "sh setup.sh"
-    puts "***********"
-    puts
   end
 end

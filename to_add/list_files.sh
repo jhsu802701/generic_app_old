@@ -23,3 +23,6 @@ ls -R1 -I concerns db >> notes/file_list.txt
 
 echo "" >> notes/file_list.txt
 ls -R1 -I concerns test >> notes/file_list.txt
+
+echo "" >> notes/file_list.txt
+cat config/routes.rb >> notes/file_list.txt

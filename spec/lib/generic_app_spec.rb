@@ -23,7 +23,7 @@ describe GenericApp do
       expect(StringInFile.present("rails console --sandbox", "tmp/sandbox.sh")).to eq(true)
       expect(StringInFile.present("rake db:seed", "tmp/seed.sh")).to eq(true)
       expect(StringInFile.present("rails server -b 0.0.0.0", "tmp/server.sh")).to eq(true)
-      expect(StringInFile.present("bundle install", "tmp/setup.sh")).to eq(true)
+      expect(StringInFile.present("bundle install", "tmp/test.sh")).to eq(true)
 
       puts "\nChecking README.md"
       expect(StringInFile.present("list_files.sh", "tmp/README.md")).to eq(true)
