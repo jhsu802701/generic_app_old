@@ -22,6 +22,12 @@ echo "" >> notes/file_list.txt
 ls -R1 -I concerns db >> notes/file_list.txt
 
 echo "" >> notes/file_list.txt
+ls -R1 -I concerns features >> notes/file_list.txt
+
+echo "" >> notes/file_list.txt
+ls -R1 -I concerns spec >> notes/file_list.txt
+
+echo "" >> notes/file_list.txt
 ls -R1 -I concerns test >> notes/file_list.txt
 
 echo "" >> notes/file_list.txt

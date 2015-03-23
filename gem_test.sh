@@ -8,11 +8,11 @@ rake
 echo "FINISHED TESTING generic_app"
 echo "****************************"
 
-echo "******************************"
-echo "BEGIN TESTING THE tmp RUBY APP"
+echo "*******************************"
+echo "BEGIN TESTING THE tmp RAILS APP"
 cd tmp && sh test.sh
-echo "FINISHED TESTING THE tmp RUBY APP"
-echo "*********************************"
+echo "FINISHED TESTING THE tmp RAILS APP"
+echo "**********************************"
 
 echo "If all went well, there are no error messages and no failed tests."
 echo
