@@ -12,4 +12,7 @@
 *.o
 *.a
 mkmf.log
+
 *.gem
+tmp*
+.DS_Store
