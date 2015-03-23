@@ -1,0 +1,19 @@
+TABLES
+users (name, email, created_at, updated_at, timestamps, password_digest, remember_digest, admin, activation_digest, activated, activated_at, reset_digest, reset_sent_at)
+  index: named "index_users_on_email", based on email (must be unique)
+  
+SEED
+Create user
+  name:  "Example User",
+  email: "example@railstutorial.org",
+  password:              "foobar",
+  password_confirmation: "foobar",
+  admin: true,
+  activated:    true,
+  activated_at: Time.zone.now
+Create users example-1@railstutorial.org to example-99@railstutorial.org
+  name  = Faker::Name.name
+  email = "example-#{n+1}@railstutorial.org", 
+  password, password_confirmation = "password"
+  activated:    true,
+  activated_at: Time.zone.now)  

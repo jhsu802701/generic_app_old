@@ -1,0 +1,77 @@
+============
+db/schema.rb
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "password_digest"
+    t.string   "remember_digest"
+    t.boolean  "admin",             default: false
+    t.string   "activation_digest"
+    t.boolean  "activated",         default: false
+    t.datetime "activated_at"
+    t.string   "reset_digest"
+    t.datetime "reset_sent_at"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+
+===========
+db/migrate:
+20141014183645_create_users.rb
+  def change
+    create_table :users do |t|
+      t.string :name
+      t.string :email
+
+      t.timestamps null: false
+    end
+  end
+20141014205756_add_index_to_users_email.rb
+  def change
+    add_index :users, :email, unique: true
+  end
+20141014234032_add_password_digest_to_users.rb
+  def change
+    add_column :users, :password_digest, :string
+  end
+20141030174712_add_remember_digest_to_users.rb
+  def change
+    add_column :users, :remember_digest, :string
+  end
+20141104004736_add_admin_to_users.rb
+  def change
+    add_column :users, :admin, :boolean, default: false
+  end
+20141106193737_add_activation_to_users.rb
+  def change
+    add_column :users, :activation_digest, :string
+    add_column :users, :activated, :boolean, default: false
+    add_column :users, :activated_at, :datetime
+  end
+20141107180258_add_reset_to_users.rb
+  def change
+    add_column :users, :reset_digest, :string
+    add_column :users, :reset_sent_at, :datetime
+  end
+===========  
+db/seeds.rb
+User.create!(name:  "Example User",
+             email: "example@railstutorial.org",
+             password:              "foobar",
+             password_confirmation: "foobar",
+             admin: true,
+             activated:    true,
+             activated_at: Time.zone.now)
+99.times do |n|
+  name  = Faker::Name.name
+  email = "example-#{n+1}@railstutorial.org"
+  password = "password"
+  User.create!(name:  name,
+               email: email,
+               password:              password,
+               password_confirmation: password,
+               activated:    true,
+               activated_at: Time.zone.now)  
+end

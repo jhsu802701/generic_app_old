@@ -1,0 +1,7 @@
+APPLICATION
+app/controllers/application_controller.rb
+  include SessionsHelper
+app/helpers/application_helper.rb
+  def full_title(page_title = '')
+app/mailers/application_mailer.rb
+app/views/layouts/application.html.erb

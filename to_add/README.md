@@ -52,6 +52,6 @@ down your Rails app.  If you believe that this is happening, run this script
 to kill the Spring tool.
 7. list_files.sh: This script prints outlines of the path structure of 
 the MVC and testing architectures in your Rails app into the file 
-notes/list_files.txt.  While this script has no impact on how your Rails 
+notes/1-list_files.txt.  While this script has no impact on how your Rails 
 app runs, it aids the process of outlining the MVC structure and the testing 
 procedure in your app.

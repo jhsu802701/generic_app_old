@@ -1,0 +1,9 @@
+LAYOUTS
+
+app/views/layouts
+  application.html.erb
+  _footer.html.erb
+  _header.html.erb
+  mailer.html.erb
+  mailer.text.erb
+  _shim.html.erb

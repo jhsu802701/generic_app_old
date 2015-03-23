@@ -1,0 +1,10 @@
+ACCOUNT ACTIVATIONS
+app/controllers/account_activations_controller.rb
+  def edit
+test/controllers/account_activations_controller_test.rb
+app/helpers/account_activations_helper.rb
+app/views/user_mailer/account_activation.html.erb
+app/views/user_mailer/account_activation.text.erb
+config/routes.rb
+  get 'account_activations/edit'
+  resources :account_activations, only: [:edit]

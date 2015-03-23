@@ -1,0 +1,22 @@
+STATIC PAGES
+app/controllers/static_pages_controller.rb
+  def home
+  def help
+  def about
+  def contact
+test/controllers/static_pages_controller_test.rb
+  test "should get home" do
+  test "should get help" do
+  test "should get about" do
+  test "should get contact" do
+app/helpers/static_pages_helper.rb
+app/views/static_pages
+  about.html.erb
+  contact.html.erb
+  help.html.erb
+  home.html.erb
+config/routes.rb
+  root                'static_pages#home'
+  get    'help'    => 'static_pages#help'
+  get    'about'   => 'static_pages#about'
+  get    'contact' => 'static_pages#contact'
