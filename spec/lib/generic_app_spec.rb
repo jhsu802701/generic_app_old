@@ -31,7 +31,6 @@ describe GenericApp do
       puts "\nChecking Guardfile"
       expect(StringInFile.present("all_on_start: true", "tmp/Guardfile")).to eq(true)
       
-      
       puts "\nChecking for suggestion to use password management software"
       expect(StringInFile.present("KeePassX", "tmp/app/views/users/new.html.erb")).to eq(true)
       expect(StringInFile.present("KeePassX", "tmp/app/views/users/edit.html.erb")).to eq(true)
@@ -40,6 +39,11 @@ describe GenericApp do
      }
     t1.join
     
+  end
+  it "The .gitignore file includes tmp, tmp*, and ,DS_Store" do
+    expect(StringInFile.present("tmp", "tmp/.gitignore")).to eq(true)
+    expect(StringInFile.present("tmp*", "tmp/.gitignore")).to eq(true)
+    expect(StringInFile.present(".DS_Store", "tmp/.gitignore")).to eq(true)
   end
 end
 
