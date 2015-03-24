@@ -15,14 +15,6 @@ describe GenericApp do
      }
     t1.join
 
-    t1 = Thread.new {       
-
-  
-      
-      
-  
-     }
-    t1.join
   end
   
   it "Bash scripts should be provided" do

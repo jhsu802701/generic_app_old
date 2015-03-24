@@ -1,6 +1,6 @@
 #!/bin/bash
 
-gem uninstall generic_gem
+gem uninstall generic_app
 bin/setup
 echo "****************************"
 echo "BEGIN INSTALLING generic_gem"
