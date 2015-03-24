@@ -10,8 +10,7 @@ describe GenericApp do
     system("rm -rf tmp")
     
     t1 = Thread.new { 
-      generic_app = GenericApp.new
-      generic_app.create("tmp")
+      GenericApp.create("tmp")
      }
     t1.join
 

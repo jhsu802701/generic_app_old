@@ -3,12 +3,9 @@
 require "generic_app/version"
 require "string_in_file"
 
-class GenericApp
+module GenericApp
 
-  def initialize
-  end
-
-  def create (subdir_name)
+  def self.create (subdir_name)
     dir_main = File.expand_path("../../", __FILE__)
     subdir_name_final = subdir_name
     subdir_name_final = "sample_app_3rd_edition" if subdir_name == ""
