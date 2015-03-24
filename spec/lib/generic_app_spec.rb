@@ -15,31 +15,41 @@ describe GenericApp do
      }
     t1.join
 
-    t1 = Thread.new { 
-      puts "\nChecking Bash scripts"      
-      expect(StringInFile.present("heroku run rake db:migrate", "tmp/heroku_upload.sh")).to eq(true)
-      expect(StringInFile.present("pkill", "tmp/kill_spring.sh")).to eq(true)
-      expect(StringInFile.present("ls -R1 -I concerns app/controllers", "tmp/list_files.sh")).to eq(true)
-      expect(StringInFile.present("rails console --sandbox", "tmp/sandbox.sh")).to eq(true)
-      expect(StringInFile.present("rake db:seed", "tmp/seed.sh")).to eq(true)
-      expect(StringInFile.present("rails server -b 0.0.0.0", "tmp/server.sh")).to eq(true)
-      expect(StringInFile.present("bundle install", "tmp/test.sh")).to eq(true)
+    t1 = Thread.new {       
 
-      puts "\nChecking README.md"
-      expect(StringInFile.present("list_files.sh", "tmp/README.md")).to eq(true)
-
-      puts "\nChecking Guardfile"
-      expect(StringInFile.present("all_on_start: true", "tmp/Guardfile")).to eq(true)
+  
       
-      puts "\nChecking for suggestion to use password management software"
-      expect(StringInFile.present("KeePassX", "tmp/app/views/users/new.html.erb")).to eq(true)
-      expect(StringInFile.present("KeePassX", "tmp/app/views/users/edit.html.erb")).to eq(true)
-      expect(StringInFile.present("KeePassX", "tmp/app/views/password_resets/new.html.erb")).to eq(true)
-      expect(StringInFile.present("KeePassX", "tmp/app/views/password_resets/edit.html.erb")).to eq(true)
+      
+  
      }
     t1.join
-    
   end
+  
+  it "Bash scripts should be provided" do
+    expect(StringInFile.present("heroku run rake db:migrate", "tmp/heroku_upload.sh")).to eq(true)
+    expect(StringInFile.present("pkill", "tmp/kill_spring.sh")).to eq(true)
+    expect(StringInFile.present("ls -R1 -I concerns app/controllers", "tmp/list_files.sh")).to eq(true)
+    expect(StringInFile.present("rails console --sandbox", "tmp/sandbox.sh")).to eq(true)
+    expect(StringInFile.present("rake db:seed", "tmp/seed.sh")).to eq(true)
+    expect(StringInFile.present("rails server -b 0.0.0.0", "tmp/server.sh")).to eq(true)
+    expect(StringInFile.present("bundle install", "tmp/test.sh")).to eq(true)
+  end
+  
+  it "New README.md file should be provided" do
+    expect(StringInFile.present("list_files.sh", "tmp/README.md")).to eq(true)
+  end
+  
+  it "Guardfile should be set to automatically run tests upon startup" do
+    expect(StringInFile.present("all_on_start: true", "tmp/Guardfile")).to eq(true)
+  end
+  
+  it "Suggestions to use password management software should be provided" do
+    expect(StringInFile.present("KeePassX", "tmp/app/views/users/new.html.erb")).to eq(true)
+    expect(StringInFile.present("KeePassX", "tmp/app/views/users/edit.html.erb")).to eq(true)
+    expect(StringInFile.present("KeePassX", "tmp/app/views/password_resets/new.html.erb")).to eq(true)
+    expect(StringInFile.present("KeePassX", "tmp/app/views/password_resets/edit.html.erb")).to eq(true)
+  end
+  
   it "The .gitignore file includes tmp, tmp*, and ,DS_Store" do
     expect(StringInFile.present("tmp", "tmp/.gitignore")).to eq(true)
     expect(StringInFile.present("tmp*", "tmp/.gitignore")).to eq(true)
