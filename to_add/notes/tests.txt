@@ -1,4 +1,4 @@
-NOTE: controller, model, and helper tests are in the notes/mvc_by_object.txt file.
+NOTE: controller, model, mailer, and helper tests are in the notes/mvc-*.txt file.
 
 test_helper.rb
   fixtures :all
