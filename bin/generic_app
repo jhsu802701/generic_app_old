@@ -5,10 +5,10 @@ require 'generic_app'
 puts "***********************"
 puts "Welcome to Generic App!"
 puts
-puts "DEFAULT VALUE: tmp1"
+puts "DEFAULT VALUE: tmp9"
 puts "Enter the directory name you wish to use for your generic app:"
 subdir_name = gets.chomp
-subdir_name = "tmp1" if subdir_name == ""
+subdir_name = "tmp9" if subdir_name == ""
 GenericApp.create(subdir_name)
 puts
 puts "******************************************"
@@ -18,4 +18,3 @@ system("cd #{subdir_name} && sh test.sh")
 puts
 puts "FINISHED TESTING THE #{subdir_name} RAILS APP"
 puts "*********************************************"
-
