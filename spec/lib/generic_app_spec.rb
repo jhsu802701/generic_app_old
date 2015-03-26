@@ -3,8 +3,9 @@ require 'generic_app'
 require 'string_in_file'
 
 describe GenericApp do
-  it "should copy the Rails tutorial" do
-    puts "*********************************"
+  it "SQLite version should work" do
+    puts "****************************"
+    puts "Testing the SQLite procedure"
     puts "Clearing space for Rails tutorial"
     system("rm -rf tmp1")
     GenericApp.sq("tmp1")
@@ -44,17 +45,30 @@ describe GenericApp do
   end
   
   it "The notes/1-file_list.txt file should be in place" do
-    expect(StringInFile.present("app/models", "tmp1/notes/1-file_list.txt file")).to eq(true)
-    expect(StringInFile.present("app/views", "tmp1/notes/1-file_list.txt file")).to eq(true)
-    expect(StringInFile.present("app/controllers", "tmp1/notes/1-file_list.txt file")).to eq(true)
+    expect(StringInFile.present("app/models", "tmp1/notes/1-file_list.txt")).to eq(true)
+    expect(StringInFile.present("app/views", "tmp1/notes/1-file_list.txt")).to eq(true)
+    expect(StringInFile.present("app/controllers", "tmp1/notes/1-file_list.txt")).to eq(true)
   end
   
   it "The notes/mvc-users.txt file should be in place" do
-    expect(StringInFile.present("app/controllers/users_controller.rb", "tmp1/notes/1-file_list.txt file")).to eq(true)
-    expect(StringInFile.present("test/controllers/users_controller_test.rb", "tmp1/notes/1-file_list.txt file")).to eq(true)
-    expect(StringInFile.present("app/helpers/users_helper.rb", "tmp1/notes/1-file_list.txt file")).to eq(true)
-    expect(StringInFile.present("def index", "tmp1/notes/1-file_list.txt file")).to eq(true)
-    expect(StringInFile.present("def show", "tmp1/notes/1-file_list.txt file")).to eq(true)
+    expect(StringInFile.present("app/controllers/users_controller.rb", "tmp1/notes/mvc-users.txt")).to eq(true)
+    expect(StringInFile.present("test/controllers/users_controller_test.rb", "tmp1/notes/mvc-users.txt")).to eq(true)
+    expect(StringInFile.present("app/helpers/users_helper.rb", "tmp1/notes/mvc-users.txt")).to eq(true)
+    expect(StringInFile.present("def index", "tmp1/notes/mvc-users.txt")).to eq(true)
+    expect(StringInFile.present("def show", "tmp1/notes/mvc-users.txt")).to eq(true)
+  end
+  
+  it "PostgreSQL version should work" do
+    puts "********************************"
+    puts "Testing the PostgreSQL procedure"
+    puts "Clearing space for Rails tutorial"
+    system("rm -rf tmp2")
+    
+    n = Time.now.to_i
+    
+    GenericApp.pg("tmp2", "db_tmp2_#{n}", "eu_tmp2_#{n}", "ep_tmp2_#{n}", "u_tmp2_#{n}", "abcdef")
+    
+    GenericApp.git_init("tmp2")
   end
   
 end

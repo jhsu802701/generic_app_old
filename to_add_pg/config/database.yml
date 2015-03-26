@@ -1,0 +1,26 @@
+# POSTGRESQL DATABASE PARAMETERS:
+# Database name (development)
+# Database name (testing)
+# Database name (production)
+# Username 
+# Password
+# NOTE: All three databases use the same username and password.
+
+default: &default
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+  username: <%= ENV['VAR_STORE_USERNAME'] %>
+  password: <%= ENV['VAR_STORE_PASSWORD'] %>
+
+development:
+  <<: *default
+  database: DB_NAME_DEV
+
+test:
+  <<: *default
+  database: DB_NAME_TEST
+
+production:
+  <<: *default
+  database: DB_NAME_PRO
