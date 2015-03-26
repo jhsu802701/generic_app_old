@@ -62,7 +62,7 @@ module GenericApp
     system("cd #{subdir_name} && rm -rf .git")
     system("cd #{subdir_name} && git init")
     system("cd #{subdir_name} && git add .")
-    system("cd #{subdir_name} && git commit -m 'Initial commit'")
+    system("cd #{subdir_name} && git commit -m 'Initial commit' >/dev/null")
     $stdout = STDOUT
   end
   
