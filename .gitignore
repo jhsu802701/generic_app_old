@@ -16,3 +16,4 @@ mkmf.log
 *.gem
 tmp*
 .DS_Store
+/log/
