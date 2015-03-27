@@ -71,5 +71,13 @@ describe GenericApp do
     GenericApp.git_init("tmp2")
   end
   
+  it "Adding scripts to an existing app should work" do
+    puts "********************************************************"
+    puts "Testing the addition of scripts to an existing Rails app"
+    system("rm -rf tmp3")
+    system("git clone https://github.com/mhartl/sample_app_3rd_edition.git tmp3")
+    GenericApp.add_scripts ("tmp3")
+  end
+  
 end
 

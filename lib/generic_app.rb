@@ -7,7 +7,7 @@ require "line_containing"
 ENV['DIR_MAIN'] = File.expand_path("../../", __FILE__)
 
 module GenericApp
-
+  
   # Create app, stick with SQLite database in development
   def self.sq (subdir_name)
     t1 = Thread.new { 
