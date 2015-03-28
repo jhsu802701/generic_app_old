@@ -3,7 +3,7 @@ require 'generic_app'
 require 'string_in_file'
 
 describe GenericApp do
-  it "SQLite version should work" do
+  it "SQLite version should execute" do
     puts "****************************"
     puts "Testing the SQLite procedure"
     puts "Clearing space for Rails tutorial"
@@ -57,27 +57,6 @@ describe GenericApp do
     expect(StringInFile.present("def index", "tmp1/notes/mvc-users.txt")).to eq(true)
     expect(StringInFile.present("def show", "tmp1/notes/mvc-users.txt")).to eq(true)
   end
-  
-  it "PostgreSQL version should work" do
-    puts "********************************"
-    puts "Testing the PostgreSQL procedure"
-    puts "Clearing space for Rails tutorial"
-    system("rm -rf tmp2")
-    
-    n = Time.now.to_i
-    
-    GenericApp.pg("tmp2", "db_tmp2_#{n}", "eu_tmp2_#{n}", "ep_tmp2_#{n}", "u_tmp2_#{n}", "abcdef")
-    
-    GenericApp.git_init("tmp2")
-  end
-  
-  it "Adding scripts to an existing app should work" do
-    puts "********************************************************"
-    puts "Testing the addition of scripts to an existing Rails app"
-    system("rm -rf tmp3")
-    system("git clone https://github.com/mhartl/sample_app_3rd_edition.git tmp3")
-    GenericApp.add_scripts ("tmp3")
-  end
-  
+   
 end
 
