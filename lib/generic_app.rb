@@ -17,15 +17,15 @@ module GenericApp
     self.guard_file (subdir_name)
     self.app_views_password (subdir_name)
     self.guard_file (subdir_name)
-    self.app_views_password (subdir_name)
-    self.git_init (subdir_name)
-    self.add_scripts (subdir_name)
+    self.add_scripts (subdir_name) # Also used in the add-on procedure
     self.add_notes (subdir_name)
     self.add_readme (subdir_name)
-    t1 = Thread.new { 
-      self.update_gitignore (subdir_name)
+    self.update_gitignore (subdir_name) # Also used in the add-on procedure
+    t1 = Thread.new {
+      self.git_init (subdir_name)
     }
     t1.join
+    
   end
   
   def self.git_clone (subdir_name)
@@ -95,12 +95,12 @@ module GenericApp
     puts "*******************"
     puts "Updating .gitignore"
     if StringInFile.present("tmp*","#{subdir_name}/.gitignore") == false
-      command = 'echo "tmp*" >> '
+      command = 'echo "\ntmp*" >> '
       command += "#{subdir_name}/.gitignore"
       system(command)
     end
     if StringInFile.present(".DS_Store","#{subdir_name}/.gitignore") == false
-      command = 'echo ".DS_Store" >> '
+      command = 'echo "\n.DS_Store" >> '
       command += "#{subdir_name}/.gitignore"
       system(command)
     end
@@ -179,7 +179,6 @@ module GenericApp
     StringInFile.replace("USERNAME123", username_x, "#{subdir_name}/config/application.yml")
     StringInFile.replace("VAR_STORE_PASSWORD", var_store_password, "#{subdir_name}/config/application.yml")
     StringInFile.replace("PASSWORD123", password_x, "#{subdir_name}/config/application.yml")
-    
     puts
     puts "******************************"
     puts "Setting up config/database.yml"
@@ -189,6 +188,24 @@ module GenericApp
     StringInFile.replace("DB_NAME_DEV", ENV['APP_DB_NAME_DEV'], "#{subdir_name}/config/database.yml")
     StringInFile.replace("DB_NAME_TEST", ENV['APP_DB_NAME_TEST'], "#{subdir_name}/config/database.yml")
     StringInFile.replace("DB_NAME_PRO", ENV['APP_DB_NAME_PRO'], "#{subdir_name}/config/database.yml")
+    puts
+    puts "*************************************"
+    puts "POSTGRESQL PUBLIC DATABASE PARAMETERS"
+    puts "This information is stored in the config/database.yml file"
+    puts "Database Name (development): #{ENV['APP_DB_NAME_DEV']}"
+    puts "Database Name (testing): #{ENV['APP_DB_NAME_TEST']}"
+    puts "Database Name (production): #{ENV['APP_DB_NAME_PRO']}"
+    puts "Name of Environmental Variable Containing The Username: #{var_store_username}"
+    puts "Name of Environmental Variable Containing the Password: #{var_store_password}"
+    puts
+    puts "**************************************"
+    puts "POSTGRESQL PRIVATE DATABASE PARAMETERS"
+    puts "This information is stored in the config/application.yml file."
+    puts "The config/application.yml file is ignored by Git, which keeps it private."
+    puts "Be sure you have this information saved in KeePassX."
+    puts "Username: #{username_x}"
+    puts "Password: #{password_x}"
+    
   end
   
 end
