@@ -25,7 +25,7 @@ end
 
 puts "*********************************************"
 puts "BEGIN TESTING THE PRE-EXISTING RAILS APP"
-system("sh test.sh")
+system("cd #{dir_app} && sh test.sh")
 puts "FINISHED TESTING THE PRE-EXISTING RAILS APP"
 puts "*********************************************"
 puts "The test.sh script is designed around the railstutorial.org Sample App."
