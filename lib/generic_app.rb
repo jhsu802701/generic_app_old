@@ -137,10 +137,6 @@ module GenericApp
     puts "Updating the Gemfile (PostgreSQL for development, testing, and production)"
     LineContaining.delete("sqlite", "#{subdir_name}/Gemfile")
     LineContaining.delete("gem 'pg'", "#{subdir_name}/Gemfile")
-    open("#{subdir_name}/Gemfile", 'a') {|f|
-      f << "\n\ngem 'pg'\n"
-      f << "gem 'figaro'\n"
-    }
   end
   
   def self.pg_remove_sqlite (subdir_name)

@@ -1,5 +1,9 @@
 # GenericApp
 
+## Prerequisites
+
+You must have not only Ruby on Rails installed but PostgreSQL installed as well.  Everything you need to use GenericApp is pre-installed in my Debian Stable Vagrant Box for Ruby On Rails ( https://github.com/jhsu802701/vagrant_debian_wheezy_rvm ).
+
 ## Installation
 
 Install it yourself with the command:
@@ -8,10 +12,11 @@ Install it yourself with the command:
 
 ## Usage
 
-Once you have installed this Ruby gem, just go to the directory where you 
-keep your Rails projects and enter the command "generic_app".  You will be 
-asked to provide a name for the subdirectory you wish to have created and 
-used for your new Rails app.
+### Creating A Rails App
+
+Go to the directory where you keep your Rails projects and enter the command "generic_app".  You will be asked to select the name of the directory you wish to use for your Rails project, and you will be asked whether you wish to use the SQLite or PostgreSQL database in your development environment.  If you choose PostgreSQL, you will be asked for database parameters.
+<br><br>
+After you have provided all of the necessary parameters, your generic Rails project will not only be created for you but automatically tested as well.  All this takes a few minutes instead of several long and grueling hours.
 
 ## What's the point?
 
@@ -21,7 +26,7 @@ can spend more of your time on the more advanced features and capabilities that 
 app.  Modifying a generic app takes far less time than creating an app completely from scratch.
 <br><br>
 Creating a basic generic web site with user capability and testing is a long and slow process that spans chapters 
-3 through 10 at railstutorial.org.  The GenericApp Ruby gem allows you to create such a site in seconds instead of 
+3 through 10 in railstutorial.org.  The GenericApp Ruby gem allows you to create such a site in seconds instead of 
 hours.  This is valuable for any project and essential for events like Startup Weekend and 24-hour website 
 challenges.
 <br><br>
@@ -41,20 +46,16 @@ The original Rails Tutorial Sample App provides the following features:
 4. Twitter bootstrap
 5. Databases: SQLite3 for development and PostgreSQL for production
 6. Ready for Heroku deployment
-7. User functionality: includes hashed passwords, administrative users, 
-account activations, and password resets
+7. User functionality: includes hashed passwords, administrative users, account activations, and password resets
 
 This generic Rails app provides the above features PLUS these additional 
 features:
 
-1. Bash scripts in the root directory that allow you to perform routine 
-tasks in only one step.  (These scripts are likely to be useful in Rails 
-apps that were not created with this generic_app Ruby gem.)
-2. Recommendations that the user make use of password management software 
-to generate and store secure passwords
-3. Outlines of the MVC, test suite, and database seeding process in the 
-notes folder
+1. Bash scripts in the root directory that allow you to perform routine tasks in only one step.  (These scripts are likely to be useful in Rails apps that were not created with this generic_app Ruby gem.)
+2. Recommendations that the user make use of password management software to generate and store secure passwords
+3. Outlines of the MVC, test suite, and database seeding process in the notes folder
 4. Guard automatically runs tests upon startup.
+5. If you choose PostgreSQL (instead of SQLite) as your development environment database, the parameters are automatically set on your machine AND in the app for you, and the username and password are EXCLUDED from the source code saved with Git.
 
 ## Contributing
 
