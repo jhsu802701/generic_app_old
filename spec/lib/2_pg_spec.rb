@@ -4,9 +4,9 @@ require 'string_in_file'
 
 describe GenericApp do  
   it "PostgreSQL version should execute" do
+    puts
     puts "********************************"
     puts "Testing the PostgreSQL procedure"
-    puts "Clearing space for Rails tutorial"
     system("rm -rf tmp2")
     
     n = Time.now.to_i

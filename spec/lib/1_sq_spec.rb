@@ -4,9 +4,9 @@ require 'string_in_file'
 
 describe GenericApp do
   it "SQLite version should execute" do
+    puts
     puts "****************************"
     puts "Testing the SQLite procedure"
-    puts "Clearing space for Rails tutorial"
     system("rm -rf tmp1")
     GenericApp.sq("tmp1")
     GenericApp.git_init("tmp1")

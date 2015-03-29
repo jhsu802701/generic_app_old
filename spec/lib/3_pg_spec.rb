@@ -4,12 +4,15 @@ require 'string_in_file'
 
 describe GenericApp do  
   it "PostgreSQL version works with changed parameters" do
+    puts
     puts "************************************************************************************"
     puts "Testing the PostgreSQL procedure given new databases, a new user, and a new password"
     puts "Copying the PostgreSQL-based Rails app previously created."
     system("rm -rf tmp3")
-    system("cp -rf tmp2 tmp3")
-    
+    t1 = Thread.new {
+      system("cp -rf tmp2 tmp3")
+    }
+    t1.join
     n = (Time.now.to_i ) * 2
     
     GenericApp.set_pg_params("tmp3", "db_tmp3_#{n}", "eu_tmp3_#{n}", "ep_tmp3_#{n}", "u_tmp3_#{n}", "fedcba")

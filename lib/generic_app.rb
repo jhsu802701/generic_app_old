@@ -9,11 +9,8 @@ ENV['DIR_MAIN'] = File.expand_path("../../", __FILE__)
 module GenericApp
   
   # Create app, stick with SQLite database in development
-  def self.sq (subdir_name)
-    t1 = Thread.new { 
-      self.git_clone (subdir_name)
-    }
-    t1.join
+  def self.sq (subdir_name) 
+    self.git_clone (subdir_name)
     self.guard_file (subdir_name)
     self.app_views_password (subdir_name)
     self.guard_file (subdir_name)
@@ -21,19 +18,17 @@ module GenericApp
     self.add_notes (subdir_name)
     self.add_readme (subdir_name)
     self.update_gitignore (subdir_name) # Also used in the add-on procedure
-    t1 = Thread.new {
-      self.git_init (subdir_name)
-    }
-    t1.join
-    
+    self.git_init (subdir_name)
   end
   
   def self.git_clone (subdir_name)
     puts "*************************************************"
     puts "Downloading the Sample App from railstutorial.org"
-    system("git clone https://github.com/mhartl/sample_app_3rd_edition.git #{subdir_name}")
-    system("cd #{subdir_name} && git checkout remotes/origin/account-activation-password-reset")
-
+    t1 = Thread.new {
+      system("git clone https://github.com/mhartl/sample_app_3rd_edition.git #{subdir_name}")
+      system("cd #{subdir_name} && git checkout remotes/origin/account-activation-password-reset")
+    }
+    t1.join
   end
   
   def self.guard_file (subdir_name)
@@ -63,12 +58,15 @@ module GenericApp
   def self.git_init (subdir_name)
     puts "****************"
     puts "Initializing Git"
-    $stdout = File.new( '/dev/null', 'w' )
-    system("cd #{subdir_name} && rm -rf .git")
-    system("cd #{subdir_name} && git init")
-    system("cd #{subdir_name} && git add .")
-    system("cd #{subdir_name} && git commit -m 'Initial commit' >/dev/null")
-    $stdout = STDOUT
+    t1 = Thread.new {
+      $stdout = File.new( '/dev/null', 'w' )
+      system("cd #{subdir_name} && rm -rf .git")
+      system("cd #{subdir_name} && git init")
+      system("cd #{subdir_name} && git add .")
+      system("cd #{subdir_name} && git commit -m 'Initial commit' >/dev/null")
+      $stdout = STDOUT
+    }
+    t1.join
   end
   
   def self.add_scripts (subdir_name)
@@ -126,10 +124,7 @@ module GenericApp
       self.set_pg_params(subdir_name, db_rootname_x, var_store_username, var_store_password, username_x, password_x)
     }
     t1.join
-    t1 = Thread.new {
-      self.git_init (subdir_name)
-    }
-    t1.join
+    self.git_init (subdir_name)
   end
   
   def self.pg_gemfile (subdir_name)
@@ -137,6 +132,10 @@ module GenericApp
     puts "Updating the Gemfile (PostgreSQL for development, testing, and production)"
     LineContaining.delete("sqlite", "#{subdir_name}/Gemfile")
     LineContaining.delete("gem 'pg'", "#{subdir_name}/Gemfile")
+    open("#{subdir_name}/Gemfile", 'a') {|f|
+      f << "\n\ngem 'pg'\n"
+      f << "gem 'figaro'\n"
+    }
   end
   
   def self.pg_remove_sqlite (subdir_name)

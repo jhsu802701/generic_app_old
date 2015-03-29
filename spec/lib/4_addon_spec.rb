@@ -5,10 +5,14 @@ require 'string_in_file'
 describe GenericApp do
   
   it "Adding scripts to an existing app should work" do
+    puts
     puts "********************************************************"
     puts "Testing the addition of scripts to an existing Rails app"
     system("rm -rf tmp4")
-    system("git clone https://github.com/mhartl/sample_app_3rd_edition.git tmp4")
+    t1 = Thread.new {
+      system("git clone https://github.com/mhartl/sample_app_3rd_edition.git tmp4")
+    }
+    t1.join
     GenericApp.add_scripts ("tmp4")
     GenericApp.update_gitignore ("tmp4")
   end
