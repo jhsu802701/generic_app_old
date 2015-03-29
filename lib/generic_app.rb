@@ -126,6 +126,10 @@ module GenericApp
       self.set_pg_params(subdir_name, db_rootname_x, var_store_username, var_store_password, username_x, password_x)
     }
     t1.join
+    t1 = Thread.new {
+      self.git_init (subdir_name)
+    }
+    t1.join
   end
   
   def self.pg_gemfile (subdir_name)
