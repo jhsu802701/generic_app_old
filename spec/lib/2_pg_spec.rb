@@ -14,6 +14,9 @@ describe GenericApp do
     GenericApp.pg("tmp2", "db_tmp2_#{n}", "eu_tmp2_#{n}", "ep_tmp2_#{n}", "u_tmp2_#{n}", "abcdef")
     
     GenericApp.git_init("tmp2")
+    
+    expect(StringInFile.present("sqlite", "tmp2/Gemfile")).to eq(false)
+    expect(StringInFile.present("gem 'pg'", "tmp2/Gemfile")).to eq(true)
   end
   
 end

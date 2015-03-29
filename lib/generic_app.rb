@@ -121,6 +121,7 @@ module GenericApp
   def self.pg (subdir_name, db_rootname_x, var_store_username, var_store_password, username_x, password_x)
     self.sq (subdir_name)
     self.pg_gemfile (subdir_name)
+    self.pg_remove_sqlite (subdir_name)
     t1 = Thread.new { 
       self.set_pg_params(subdir_name, db_rootname_x, var_store_username, var_store_password, username_x, password_x)
     }
@@ -136,6 +137,10 @@ module GenericApp
       f << "\n\ngem 'pg'\n"
       f << "gem 'figaro'\n"
     }
+  end
+  
+  def self.pg_remove_sqlite (subdir_name)
+    system("rm #{subdir_name}/db/*.sqlite")
   end
   
   def self.set_pg_params (subdir_name, db_rootname_x, var_store_username, var_store_password, username_x, password_x)
@@ -161,6 +166,10 @@ module GenericApp
     # Production database
     system(%q{sudo -u postgres psql -c"CREATE DATABASE $APP_DB_NAME_PRO WITH OWNER=$APP_DB_USER;"})
     system("wait")
+    
+    puts "****************************************"
+    puts "rm #{subdir_name}/config/application.yml"
+    system ("rm #{subdir_name}/config/application.yml")
     
     puts "**************************************************"
     puts "Using Figaro to create initial configuration files"
