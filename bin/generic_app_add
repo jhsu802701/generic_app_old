@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+
+require 'generic_app'
+
+valid_folder = false
+dir_app = ""
+
+while valid_folder = false or dir_app == ""  do
+  puts "*************************************************"
+  puts "Adding Generic App features to a pre-existing app"
+  puts
+  puts "Present working directory: #{Dir.pwd}"
+  puts
+  system ("ls")
+  puts
+  puts "Enter the name of the directory in which you wish to add the features of Generic App:"
+  dir_app = gets.chomp
+  begin
+    GenericApp.add_scripts (dir_app)
+    GenericApp.update_gitignore (dir_app)
+    valid_folder = true
+  rescue
+  end
+end
+
+puts "*********************************************"
+puts "BEGIN TESTING THE PRE-EXISTING RAILS APP"
+system("sh test.sh")
+puts "FINISHED TESTING THE PRE-EXISTING RAILS APP"
+puts "*********************************************"
+puts "The test.sh script is designed around the railstutorial.org Sample App."
+puts "If any tests failed, or if the tests failed to run, then you likely need to revise the test.sh script."
