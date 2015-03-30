@@ -18,6 +18,10 @@ Go to the directory where you keep your Rails projects and enter the command "ge
 <br><br>
 After you have provided all of the necessary parameters, your generic Rails project will not only be created for you but automatically tested as well.  All this takes a few minutes instead of several long and grueling hours.
 
+### Adding Generic App Features To An Existing Project
+
+Go to the parent of the app's root directory.  Enter the command "generic_app_add".  You will be shown a list of all sub-directories within your present working directory.  Pick the sub-directory corresponding to your target app.  The Bash scripts and the list of directories and files within the project will be added.  Please note that you may need to revise the test.sh script created in the project, which is designed around the railstutorial.org Sample App.
+
 ## What's the point?
 
 Welcome to Ruby On HIGH SPEED Rails!  The GenericApp gem saves you time by automatically providing the basic 
@@ -56,6 +60,14 @@ features:
 3. Outlines of the MVC, test suite, and database seeding process in the notes folder
 4. Guard automatically runs tests upon startup.
 5. If you choose PostgreSQL (instead of SQLite) as your development environment database, the parameters are automatically set on your machine AND in the app for you, and the username and password are EXCLUDED from the source code saved with Git.
+
+## Development
+
+### Testing GenericApp
+Download this GitHub repository, cd into the source code, and enter the command "sh gem_test.sh".  The screen output is saved to the log files in the log directory.  If all goes well, every test is completed with 0 or 31m0 failures and 0 errors.
+
+### Special Note on Figaro
+The Figaro gem is used for this gem AND any PostgreSQL projects created.  In the interest of avoiding confusion, the same versions of Figaro are specified in the GenericApp gemspec AND in the Gemfile of PostgreSQL-based projects created with this gem.
 
 ## Contributing
 

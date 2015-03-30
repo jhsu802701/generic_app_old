@@ -134,7 +134,7 @@ module GenericApp
     LineContaining.delete("gem 'pg'", "#{subdir_name}/Gemfile")
     open("#{subdir_name}/Gemfile", 'a') {|f|
       f << "\n\ngem 'pg'\n"
-      f << "gem 'figaro'\n"
+      f << "gem 'figaro', '1.1.0'\n"
     }
   end
   
