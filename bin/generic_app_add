@@ -3,30 +3,33 @@
 require 'generic_app'
 
 valid_folder = false
-dir_app = ""
+dir_app = ''
 
-while valid_folder = false or dir_app == ""  do
-  puts "*************************************************"
-  puts "Adding Generic App features to a pre-existing app"
+while valid_folder = false or dir_app == '' do
+  puts '*************************************************'
+  puts 'Adding Generic App features to a pre-existing app'
   puts
   puts "Present working directory: #{Dir.pwd}"
   puts
-  system ("ls")
+  system ('ls')
   puts
-  puts "Enter the name of the directory in which you wish to add the features of Generic App:"
+  puts 'Enter the name of the directory in which you wish to add the features of Generic App:'
   dir_app = gets.chomp
   begin
-    GenericApp.add_scripts (dir_app)
-    GenericApp.update_gitignore (dir_app)
+    GenericApp.add (dir_app)
     valid_folder = true
   rescue
   end
 end
 
-puts "*********************************************"
-puts "BEGIN TESTING THE PRE-EXISTING RAILS APP"
-system("cd #{dir_app} && sh test.sh")
-puts "FINISHED TESTING THE PRE-EXISTING RAILS APP"
-puts "*********************************************"
-puts "The test.sh script is designed around the railstutorial.org Sample App."
-puts "If any tests failed, or if the tests failed to run, then you likely need to revise the test.sh script."
+puts '***********************************'
+puts 'Please enter the following command'
+puts 'to enter the app:'
+puts "cd #{subdir_name}"
+puts
+puts 'Please note that certain scripts (like test_app.sh and seed.sh)'
+puts 'may need to be revised for this legacy app.'
+puts
+puts 'If this legacy app uses the PostgreSQL database, run the '
+puts 'setup-pg.sh script to set up the database and its user.'
+puts

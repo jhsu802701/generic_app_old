@@ -5,15 +5,19 @@ require 'string_in_file'
 dir_app_1 = "#{ENV['DIR_PARENT']}/tmp1"
 
 describe GenericApp do
-  it "New Rails app with SQLite" do
+  it "New Rails app" do
     puts
-    puts '**********'
-    puts 'TEST APP 1'
-    puts 'New Rails app with SQLite'
+    puts '**************'
+    puts 'CREATING APP 1'
+    puts 'New Rails app'
     system("rm -rf #{dir_app_1}")
     Dir.chdir("#{ENV['DIR_PARENT']}") do
-      GenericApp.sq('tmp1')
+      GenericApp.create_new('tmp1', '007@railstutorial.org')
     end
+  end
+  
+  it 'Email address should be updated' do
+    expect(StringInFile.present('007@railstutorial.org', "#{dir_app_1}/config/initializers/devise.rb")).to eq(true)
   end
   
   it "Bash scripts should be provided" do
@@ -54,4 +58,3 @@ describe GenericApp do
     expect(StringInFile.present("def show", "#{dir_app_1}/notes/mvc-users.txt")).to eq(true)
   end
 end
-

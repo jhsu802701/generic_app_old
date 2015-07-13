@@ -11,108 +11,34 @@ def get_input(default_value)
   end
 end
 
-puts "***********************"
-puts "Welcome to Generic App!"
+puts '***********************'
+puts 'Welcome to Generic App!'
 puts
-db_type = ""
 
-until db_type == "S" or db_type == "s" or db_type == "P" or db_type == "p"  do
-  puts "Which database do you wish to use, SQLite or PostgreSQL?"
-  puts "Enter 'S' or 's' to select SQLite."
-  puts "Enter 'P' or 'p' to select PostgreSQL."
-  db_type = gets.chomp
-end
-
-default_subdir = "tmp9"
+default_subdir = 'tmp9'
 puts
 puts "DEFAULT VALUE: #{default_subdir}"
-puts "Enter the directory name you wish to use for your generic app:"
+puts 'Enter the directory name you wish to use for your generic app:'
 subdir_name = get_input(default_subdir)
 puts "You chose '#{subdir_name}'."
 puts
 
-n = Time.now.to_i
+default_email = 'please-change-me-at-config-initializers-devise@example.com'
+puts "DEFAULT VALUE: #{default_email}"
+puts "Enter the email address you wish to use for your generic app's mailer:"
+email = get_input(default_email)
 
-if db_type == "P" or db_type == "p"
-  # self.pg (subdir_name, db_rootname_x, var_store_username, var_store_password, username_x, password_x)
-  puts
-  puts "You chose PostgreSQL."
-  puts
-  
-  default_root = "db_#{subdir_name}_#{n}"
-  puts "DEFAULT database names: "
-  puts "Root: #{default_root}"
-  puts "Development: #{default_root}_dev"
-  puts "Testing: #{default_root}_test"
-  puts "Production: #{default_root}_pro"
-  puts
-  
-  puts "Enter the root name of your database:"
-  db_rootname_x = get_input(default_root)
-  puts
-  puts "The database names you selected are:"
-  puts "Root: #{db_rootname_x}"
-  puts "Development: #{db_rootname_x}_dev"
-  puts "Testing: #{db_rootname_x}_test"
-  puts "Production: #{db_rootname_x}_pro"
-  puts
-  
-  default_var_store_username = "var_user_#{subdir_name}_#{n}"
-  puts "DEFAULT environmental variable for storing your username: #{default_var_store_username}"
-  puts "Enter the name you wish to use for the ENVIRONMENTAL VARIABLE that stores your username:"
-  var_store_username = get_input(default_var_store_username)
-  puts
-  puts "Environmental variable for storing your username: #{var_store_username}"
-  puts
-  
-  default_var_store_password = "var_password_#{subdir_name}_#{n}"
-  puts "DEFAULT environmental variable for your password: #{default_var_store_password}"
-  puts "Enter the name you wish to use for the ENVIRONMENTAL VARIABLE that stores your password:"
-  var_store_password = get_input(default_var_store_password)
-  puts
-  puts "Environmental variable for storing your password: #{var_store_password}"
-  puts
-  
-  default_username = "user_#{subdir_name}_#{n}"
-  puts "DEFAULT username: #{default_username}"
-  puts "Enter the username you wish to use:"
-  username_x = get_input(default_username)
-  puts
-  puts "Your username: #{username_x}"
-  puts
-  
-  default_password = "long_way_stinks"
-  puts "NOTE: It is recommended that you use the program KeePassX (http://www.keepassx.org/) to generate secure passwords AND store them."
-  puts
-  puts "DEFAULT password: #{default_password}"
-  puts "Enter the password you wish to use:"
-  password_x = get_input(default_password)
-  puts
-  puts "Your password: #{password_x}"
-  puts
-  GenericApp.pg(subdir_name, db_rootname_x, var_store_username, var_store_password, username_x, password_x)
-  
-else
-  puts "You chose SQLite."
-  GenericApp.sq(subdir_name)
-end
+GenericApp.create(subdir_name, email)
 
-puts "*********************************************"
+puts '*********************************************'
 puts "BEGIN TESTING THE #{subdir_name} RAILS APP"
-system("cd #{subdir_name} && sh test.sh")
+system("cd #{subdir_name} && sh test_app.sh")
 puts "FINISHED TESTING THE #{subdir_name} RAILS APP"
-puts "*********************************************"
-if db_type == "P" or db_type == "p"
-  puts "DATABASE PARAMETERS:"
-  puts "The database names you selected are:"
-  puts "Root: #{db_rootname_x}"
-  puts "Development: #{db_rootname_x}_dev"
-  puts "Testing: #{db_rootname_x}_test"
-  puts "Production: #{db_rootname_x}_pro"
-  puts
-  puts "Environmental variable for storing your username: #{var_store_username}"
-  puts "Environmental variable for storing your password: #{var_store_password}"
-  puts "Your username: #{username_x}"
-  puts "Your password: #{password_x}"
-  puts 
-end
+puts '*********************************************'
+
+puts "Your new Rails app has been created at #{ENV['PWD']}/#{subdir_name} ."
+puts 'It is currently configured to use the SQLite database in the'
+puts 'development environment.'
+puts 'To set up the PostgreSQL database, enter the'
+puts "#{ENV['PWD']}/#{subdir_name} directory and enter the command"
+puts 'sh setup-pg.sh .'
