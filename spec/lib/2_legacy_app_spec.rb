@@ -14,7 +14,12 @@ describe GenericApp do
     system("rm -rf #{dir_app_2}")
     Dir.chdir("#{ENV['DIR_PARENT']}") do
       t1 = Thread.new {
-        system("git clone https://github.com/mhartl/sample_app_3rd_edition.git tmp2")
+        puts '------------------'
+        puts 'Getting legacy app'
+        system('git clone https://github.com/mhartl/sample_app_3rd_edition.git tmp2')
+        system("git checkout remotes/origin/account-activation-password-reset")
+        puts 'Finished acquiring legacy app'
+        puts '-----------------------------'
       }
       t1.join
       GenericApp.add ('tmp2')
@@ -29,10 +34,6 @@ describe GenericApp do
     expect(StringInFile.present("rake db:seed", "#{dir_app_2}/seed.sh")).to eq(true)
     expect(StringInFile.present("rails server -b 0.0.0.0", "#{dir_app_2}/server.sh")).to eq(true)
     expect(StringInFile.present("bundle install", "#{dir_app_2}/test_app.sh")).to eq(true)
-  end
-  
-  it "New README.md file should be provided" do
-    expect(StringInFile.present("list_files.sh", "#{dir_app_2}/README.md")).to eq(true)
   end
 
   it "The .gitignore file includes tmp, tmp*, and ,DS_Store" do
