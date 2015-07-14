@@ -25,7 +25,7 @@ end
 puts '***********************************'
 puts 'Please enter the following command'
 puts 'to enter the app:'
-puts "cd #{subdir_name}"
+puts "cd #{dir_app}"
 puts
 puts 'Please note that certain scripts (like test_app.sh and seed.sh)'
 puts 'may need to be revised for this legacy app.'

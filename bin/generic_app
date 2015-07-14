@@ -28,7 +28,7 @@ puts "DEFAULT VALUE: #{default_email}"
 puts "Enter the email address you wish to use for your generic app's mailer:"
 email = get_input(default_email)
 
-GenericApp.create(subdir_name, email)
+GenericApp.create_new(subdir_name, email)
 
 puts '*********************************************'
 puts "BEGIN TESTING THE #{subdir_name} RAILS APP"
