@@ -1,8 +1,19 @@
 #!/bin/bash
 
-# gem uninstall generic_app
+gem uninstall generic_app
 DIR_GENERIC_APP=$PWD
 DIR_PARENT="${PWD%/*}" 
+mkdir -p log
+
+echo "**************"
+echo "bundle install"
+bin/setup >/dev/null
+
+echo "*************************"
+echo "BEGIN TESTING generic_app"
+rake 2>&1 | tee $DIR_GENERIC_APP/log/generic_app.txt
+echo "FINISHED TESTING generic_app"
+echo "****************************"
 
 echo '************'
 echo 'BEGIN TEST 1'
