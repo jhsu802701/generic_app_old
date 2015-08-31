@@ -39,21 +39,6 @@ hours.  This is valuable for any project and essential for events like Startup W
 challenges.
 <br><br>
 The GenericApp gem copies the GenericApp Template (https://github.com/jhsu802701/generic_app_template) for use as a template for starting a new project.  Starting a Rails app completely from scratch (by using the "rails new" command) requires manually installing and configuring MiniTest, Guard, Twitter bootstrap, the user model, user sign-ups, user login/logout, user authorization, administrative users, account activations, and password resets.  People are often tempted to "save time" by omitting testing.  Using the GenericApp gem allows you to have all of the essential basic elements of a generic app as soon as you start it.  It's a shortcut that actually complies with best practices.
-<br><br>
-Features provided by GenericApp include:
-1. Static pages
-2. A comprehensive suite of tests, including Capybara integration tests
-3. Guard for automated testing
-4. Twitter bootstrap
-5. Databases: SQLite3 for development and PostgreSQL for production PLUS a script that automates the process of setting PostgreSQL parameters AND excluding your username and password from the Git repository
-6. Ready for Heroku deployment
-7. The devise gem for providing user and admin authentication
-8. Bash scripts in the root directory that allow you to perform routine tasks in only one step.
-9. Recommendations that the user make use of password management software to generate and store secure passwords
-10. Outlines of the MVC, test suite, and database seeding process in the notes folder
-11. Guard automatically runs tests upon startup.
-12. Tools for checking code quality
-13. Code Climate test reporting and badges for the README page
 
 ## Development
 
