@@ -1,4 +1,4 @@
-[![Build Status](https://api.travis-ci.org/jhsu802701/generic_gem.svg?branch=master)](http://travis-ci.org/jhsu802701/generic_app)
+[![Build Status](https://travis-ci.org/jhsu802701/generic_app.svg?branch=master)](http://travis-ci.org/jhsu802701/generic_app)
 
 [![Code Climate](https://codeclimate.com/github/jhsu802701/generic_app/badges/gpa.svg)](https://codeclimate.com/github/jhsu802701/generic_app)
 
