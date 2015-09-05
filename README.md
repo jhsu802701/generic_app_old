@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/jhsu802701/generic_app.svg?branch=master)](http://travis-ci.org/jhsu802701/generic_app)
 [![Code Climate](https://codeclimate.com/github/jhsu802701/generic_app/badges/gpa.svg)](https://codeclimate.com/github/jhsu802701/generic_app)
+<a href="https://codeclimate.com/github/jhsu802701/generic_app/coverage"><img src="https://codeclimate.com/github/jhsu802701/generic_app/badges/coverage.svg" /></a>
 [![security](https://hakiri.io/github/jhsu802701/generic_app/master.svg)](https://hakiri.io/github/jhsu802701/generic_app/master)
 
 # GenericApp
