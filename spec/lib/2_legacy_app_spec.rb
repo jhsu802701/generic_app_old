@@ -17,7 +17,9 @@ describe GenericApp do
         puts '------------------'
         puts 'Getting legacy app'
         system('git clone https://github.com/mhartl/sample_app_3rd_edition.git tmp2')
-        system("git checkout remotes/origin/account-activation-password-reset")
+        system('wait')
+        system("cd tmp2 && git checkout remotes/origin/account-activation-password-reset")
+        system('wait')
         puts 'Finished acquiring legacy app'
         puts '-----------------------------'
       }
