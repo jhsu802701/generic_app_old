@@ -42,5 +42,25 @@ describe GenericApp do
     expect(StringInFile.present("tmp", "#{dir_app_2}/.gitignore")).to eq(true)
     expect(StringInFile.present("tmp*", "#{dir_app_2}/.gitignore")).to eq(true)
     expect(StringInFile.present(".DS_Store", "#{dir_app_2}/.gitignore")).to eq(true)
+    expect(StringInFile.present("notes/*.dot", "#{dir_app_2}/.gitignore")).to eq(true)
+    expect(StringInFile.present("notes/*.svg", "#{dir_app_2}/.gitignore")).to eq(true)
+    expect(StringInFile.present("gemsurance_report.html", "#{dir_app_2}/.gitignore")).to eq(true)
+  end
+
+  it "The Gemfile includes code checking gems" do
+    expect(StringInFile.present("gem 'sandi_meter'", "#{dir_app_2}/Gemfile")).to eq(true)
+    expect(StringInFile.present("gem 'brakeman'", "#{dir_app_2}/Gemfile")).to eq(true)
+    expect(StringInFile.present("gem 'bundler-audit'", "#{dir_app_2}/Gemfile")).to eq(true)
+    expect(StringInFile.present("gem 'rails-erd'", "#{dir_app_2}/Gemfile")).to eq(true)
+    expect(StringInFile.present("gem 'railroady'", "#{dir_app_2}/Gemfile")).to eq(true)
+    expect(StringInFile.present("gem 'annotate'", "#{dir_app_2}/Gemfile")).to eq(true)
+    expect(StringInFile.present("gem 'gemsurance'", "#{dir_app_2}/Gemfile")).to eq(true)
+  end
+  
+  it 'The test_code.sh script excludes certain parts of the original' do
+    expect(StringInFile.present('***', "#{dir_app_2}/test_code.sh")).to eq(false)
+    expect(StringInFile.present('rubocop', "#{dir_app_2}/test_code.sh")).to eq(false)
+    expect(StringInFile.present('rails_best_practices', "#{dir_app_2}/test_code.sh")).to eq(false)
+    expect(StringInFile.present('metric_fu', "#{dir_app_2}/test_code.sh")).to eq(false)
   end
 end

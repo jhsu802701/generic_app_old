@@ -14,22 +14,33 @@ echo "BEGIN TESTING generic_app"
 rake 2>&1 | tee $DIR_GENERIC_APP/log/generic_app.txt
 echo "FINISHED TESTING generic_app"
 echo "****************************"
-
-echo '************'
-echo 'BEGIN TEST 1'
+echo ''
+echo '*************'
+echo 'BEGIN TEST 1A'
 echo 'Creating new Rails app'
-
-cd $DIR_PARENT/tmp1 && sh test_app.sh 2>&1 | tee $DIR_GENERIC_APP/log/tmp1.txt 
-echo 'FINISHED TEST 1'
+cd $DIR_PARENT/tmp1 && sh test_app.sh 2>&1 | tee $DIR_GENERIC_APP/log/tmp1A.txt 
+echo 'FINISHED TEST1A'
 echo '***************'
-
-echo '************'
-echo 'BEGIN TEST 2'
+echo ''
+echo '*************'
+echo 'BEGIN TEST 1B'
+echo 'Creating new Rails app'
+cd $DIR_PARENT/tmp1 && sh test_code.sh 2>&1 | tee $DIR_GENERIC_APP/log/tmp1B.txt 
+echo 'FINISHED TEST 1B'
+echo '****************'
+echo ''
+echo '*************'
+echo 'BEGIN TEST 2A'
 echo 'Adding Generic App features to legacy Rails app'
-
-cd $DIR_PARENT/tmp2 && sh test_app.sh 2>&1 | tee $DIR_GENERIC_APP/log/tmp2.txt 
-echo 'FINISHED TEST 2'
-echo '***************'
+cd $DIR_PARENT/tmp2 && sh test_app.sh 2>&1 | tee $DIR_GENERIC_APP/log/tmp2A.txt
+echo 'FINISHED TEST 2A'
+echo '****************'
+echo ''
+echo '*************'
+echo 'BEGIN TEST 2B'
+cd $DIR_PARENT/tmp2 && sh test_code.sh 2>&1 | tee $DIR_GENERIC_APP/log/tmp2B.txt
+echo 'FINISHED TEST 2B'
+echo '****************'
 
 echo
 echo '***********************************'

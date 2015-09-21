@@ -45,23 +45,56 @@ module GenericApp
   end
 
   def self.add (subdir_name)
-    self.add_to_file("#{subdir_name}/.gitignore", 'tmp*')
-    self.add_to_file("#{subdir_name}/.gitignore", '.DS_Store')
+    self.add_to_file_if("#{subdir_name}/.gitignore", 'tmp*')
+    self.add_to_file_if("#{subdir_name}/.gitignore", '.DS_Store')
+    self.add_to_file_if("#{subdir_name}/.gitignore", 'notes/*.dot')
+    self.add_to_file_if("#{subdir_name}/.gitignore", 'notes/*.svg')
+    self.add_to_file_if("#{subdir_name}/.gitignore", 'gemsurance_report.html')
+    path_gemfile = "#{subdir_name}/Gemfile"
+    self.add_to_file_always(path_gemfile, '# Gems added by generic_app')
+    self.add_to_file_always(path_gemfile, 'group :development, :test do')
+    
+    self.add_to_file_if(path_gemfile, "gem 'sandi_meter'")
+    StringInFile.replace("gem 'sandi_meter'", "  gem 'sandi_meter'", path_gemfile)
+    self.add_to_file_if(path_gemfile, "gem 'brakeman'")
+    StringInFile.replace("gem 'brakeman'", "  gem 'brakeman'", path_gemfile)
+    self.add_to_file_if(path_gemfile, "gem 'bundler-audit'")
+    StringInFile.replace("gem 'bundler-audit'", "  gem 'bundler-audit'", path_gemfile)
+    self.add_to_file_if(path_gemfile, "gem 'rails-erd'")
+    StringInFile.replace("gem 'rails-erd'", "  gem 'rails-erd'", path_gemfile)
+    self.add_to_file_if(path_gemfile, "gem 'railroady'")
+    StringInFile.replace("gem 'railroady'", "  gem 'railroady'", path_gemfile)
+    self.add_to_file_if(path_gemfile, "gem 'annotate'")
+    StringInFile.replace("gem 'annotate'", "  gem 'annotate'", path_gemfile)
+    self.add_to_file_if(path_gemfile, "gem 'gemsurance'")
+    StringInFile.replace("gem 'gemsurance'", "  gem 'gemsurance'", path_gemfile)
+    
+    self.add_to_file_always(path_gemfile, 'end')
+    
     self.copy_scripts (subdir_name)
+    LineContaining.delete('***', "#{subdir_name}/test_code.sh")
+    LineContaining.delete('rubocop', "#{subdir_name}/test_code.sh")
+    LineContaining.delete('rails_best_practices', "#{subdir_name}/test_code.sh")
+    LineContaining.delete('metric_fu', "#{subdir_name}/test_code.sh")
+  end
+  
+  def self.add_to_file_always (filename, str)
+    puts '------------------------------------'
+    puts "Updating #{filename} (adding #{str})"
+    text_from_file = File.read(filename)
+    last_char = text_from_file[-1]
+    open(filename, 'a') { |f|
+      if last_char != "\n"
+        f.puts "\n"
+      end
+      f.puts "\n#{str}"
+    }
   end
 
-  def self.add_to_file (filename, str)
-    puts '-----------------------------------'
-    puts "Updating #{filename} (adding #{str})"
+  # Add to file if not already present
+  def self.add_to_file_if (filename, str)
     if StringInFile.present(str, filename) == false
-      text_from_file = File.read(filename)
-      last_char = text_from_file[-1]
-      open(filename, 'a') { |f|
-        if last_char != "\n"
-          f.puts "\n"
-        end
-        f.puts "\n#{str}"
-      }
+      self.add_to_file_always(filename, str)
     end
   end
 

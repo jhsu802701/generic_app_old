@@ -42,6 +42,9 @@ describe GenericApp do
     expect(StringInFile.present("tmp", "#{dir_app_1}/.gitignore")).to eq(true)
     expect(StringInFile.present("tmp*", "#{dir_app_1}/.gitignore")).to eq(true)
     expect(StringInFile.present(".DS_Store", "#{dir_app_1}/.gitignore")).to eq(true)
+    expect(StringInFile.present("notes/*.dot", "#{dir_app_1}/.gitignore")).to eq(true)
+    expect(StringInFile.present("notes/*.svg", "#{dir_app_1}/.gitignore")).to eq(true)
+    expect(StringInFile.present("gemsurance_report.html", "#{dir_app_1}/.gitignore")).to eq(true)
   end
 
   it "The notes/1-file_list-controllers.txt file should be in place" do
