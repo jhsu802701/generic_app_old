@@ -36,8 +36,9 @@ echo '***************'
 echo
 echo '***********************************'
 echo 'The locations of the test logs are:'
-echo "TEST 1 (new app): $DIR_GENERIC_APP/tmp1.txt"
-echo "TEST 2 (legacy app): $DIR_GENERIC_APP/tmp2.txt"
+echo "GEM TEST: $DIR_GENERIC_APP/log/generic_app.txt"
+echo "TEST 1 (new app): $DIR_GENERIC_APP/log/tmp1.txt"
+echo "TEST 2 (legacy app): $DIR_GENERIC_APP/log/tmp2.txt"
 echo
 echo "If all went well, the results at the end of each test show 0 or 31m0 failures and 0 errors."
 echo

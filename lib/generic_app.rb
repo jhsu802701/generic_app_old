@@ -45,18 +45,18 @@ module GenericApp
   end
 
   def self.add (subdir_name)
-    self.update_gitignore(subdir_name, 'tmp*')
-    self.update_gitignore(subdir_name, '.DS_Store')
+    self.add_to_file("#{subdir_name}/.gitignore", 'tmp*')
+    self.add_to_file("#{subdir_name}/.gitignore", '.DS_Store')
     self.copy_scripts (subdir_name)
   end
 
-  def self.update_gitignore (subdir_name, str)
+  def self.add_to_file (filename, str)
     puts '-----------------------------------'
-    puts "Updating .gitignore (adding #{str})"
-    if StringInFile.present(str, "#{subdir_name}/.gitignore") == false
-      text_from_file = File.read("#{subdir_name}/.gitignore")
+    puts "Updating #{filename} (adding #{str})"
+    if StringInFile.present(str, filename) == false
+      text_from_file = File.read(filename)
       last_char = text_from_file[-1]
-      open("#{subdir_name}/.gitignore", 'a') { |f|
+      open(filename, 'a') { |f|
         if last_char != "\n"
           f.puts "\n"
         end

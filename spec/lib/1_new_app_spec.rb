@@ -43,18 +43,28 @@ describe GenericApp do
     expect(StringInFile.present("tmp*", "#{dir_app_1}/.gitignore")).to eq(true)
     expect(StringInFile.present(".DS_Store", "#{dir_app_1}/.gitignore")).to eq(true)
   end
-  
-  it "The notes/1-file_list.txt file should be in place" do
-    expect(StringInFile.present("app/models", "#{dir_app_1}/notes/1-file_list.txt")).to eq(true)
-    expect(StringInFile.present("app/views", "#{dir_app_1}/notes/1-file_list.txt")).to eq(true)
-    expect(StringInFile.present("app/controllers", "#{dir_app_1}/notes/1-file_list.txt")).to eq(true)
+
+  it "The notes/1-file_list-controllers.txt file should be in place" do
+    expect(StringInFile.present("users_controller_test.rb", "#{dir_app_1}/notes/1-file_list-controllers.txt")).to eq(true)
+    expect(StringInFile.present("users_controller.rb", "#{dir_app_1}/notes/1-file_list-controllers.txt")).to eq(true)
+    expect(StringInFile.present("confirmations_controller.rb", "#{dir_app_1}/notes/1-file_list-controllers.txt")).to eq(true)
+    expect(StringInFile.present("omniauth_callbacks_controller.rb", "#{dir_app_1}/notes/1-file_list-controllers.txt")).to eq(true)
+    expect(StringInFile.present("passwords_controller.rb", "#{dir_app_1}/notes/1-file_list-controllers.txt")).to eq(true)
+    expect(StringInFile.present("registrations_controller.rb", "#{dir_app_1}/notes/1-file_list-controllers.txt")).to eq(true)
+    expect(StringInFile.present("sessions_controller.rb", "#{dir_app_1}/notes/1-file_list-controllers.txt")).to eq(true)
+    expect(StringInFile.present("unlocks_controller.rb", "#{dir_app_1}/notes/1-file_list-controllers.txt")).to eq(true)
+  end
+
+  it "The notes/1-file_list-misc.txt file should be in place" do
+    expect(StringInFile.present("application_helper.rb", "#{dir_app_1}/notes/1-file_list-misc.txt")).to eq(true)
+    expect(StringInFile.present("users_helper.rb", "#{dir_app_1}/notes/1-file_list-misc.txt")).to eq(true)
   end
   
-  it "The notes/mvc-users.txt file should be in place" do
-    expect(StringInFile.present("users_controller.rb", "#{dir_app_1}/notes/mvc-users.txt")).to eq(true)
-    expect(StringInFile.present("users_controller_test.rb", "#{dir_app_1}/notes/mvc-users.txt")).to eq(true)
-    expect(StringInFile.present("users_helper.rb", "#{dir_app_1}/notes/mvc-users.txt")).to eq(true)
-    expect(StringInFile.present("def index", "#{dir_app_1}/notes/mvc-users.txt")).to eq(true)
-    expect(StringInFile.present("def show", "#{dir_app_1}/notes/mvc-users.txt")).to eq(true)
+  it "The notes/1-file_list-models.txt file should be in place" do
+    expect(StringInFile.present("admin_test.rb", "#{dir_app_1}/notes/1-file_list-models.txt")).to eq(true)
+    expect(StringInFile.present("user_test.rb", "#{dir_app_1}/notes/1-file_list-models.txt")).to eq(true)
+    expect(StringInFile.present("admin.rb", "#{dir_app_1}/notes/1-file_list-models.txt")).to eq(true)
+    expect(StringInFile.present("user.rb", "#{dir_app_1}/notes/1-file_list-models.txt")).to eq(true)
   end
+
 end
