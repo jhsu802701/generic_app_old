@@ -31,8 +31,6 @@ cd $DIR_PARENT/tmp2 && sh test_app.sh 2>&1 | tee $DIR_GENERIC_APP/log/tmp2.txt
 echo 'FINISHED TEST 2'
 echo '***************'
 
-
-
 echo
 echo '***********************************'
 echo 'The locations of the test logs are:'
