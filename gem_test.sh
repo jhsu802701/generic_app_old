@@ -18,6 +18,7 @@ echo ''
 echo '*************'
 echo 'BEGIN TEST 1A'
 echo 'Creating new Rails app'
+cd $DIR_PARENT/tmp1 && spring stop 
 cd $DIR_PARENT/tmp1 && sh test_app.sh 2>&1 | tee $DIR_GENERIC_APP/log/tmp1A.txt 
 echo 'FINISHED TEST1A'
 echo '***************'
@@ -32,6 +33,7 @@ echo ''
 echo '*************'
 echo 'BEGIN TEST 2A'
 echo 'Adding Generic App features to legacy Rails app'
+cd $DIR_PARENT/tmp2 && spring stop
 cd $DIR_PARENT/tmp2 && sh test_app.sh 2>&1 | tee $DIR_GENERIC_APP/log/tmp2A.txt
 echo 'FINISHED TEST 2A'
 echo '****************'
