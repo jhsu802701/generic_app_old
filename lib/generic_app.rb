@@ -52,6 +52,8 @@ module GenericApp
     self.add_to_file_if("#{subdir_name}/.gitignore", 'gemsurance_report.html')
     path_gemfile = "#{subdir_name}/Gemfile"
     self.add_to_file_always(path_gemfile, '# Gems added by generic_app')
+    self.add_to_file_if(path_gemfile, "gem 'string_in_file'")
+    self.add_to_file_if(path_gemfile, "gem 'line_containing'")
     self.add_to_file_always(path_gemfile, 'group :development, :test do')
     
     self.add_to_file_if(path_gemfile, "gem 'sandi_meter'")
