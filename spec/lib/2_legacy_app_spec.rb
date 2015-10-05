@@ -31,7 +31,7 @@ describe GenericApp do
   it "Bash scripts should be provided" do
     expect(StringInFile.present("heroku run rake db:migrate", "#{dir_app_2}/heroku_upload.sh")).to eq(true)
     expect(StringInFile.present("pkill", "#{dir_app_2}/kill_spring.sh")).to eq(true)
-    expect(StringInFile.present("ls -R1 -I concerns app/controllers", "#{dir_app_2}/list_files.sh")).to eq(true)
+    expect(StringInFile.present("ls -R1 -I concerns app/controllers", "#{dir_app_2}/outline.sh")).to eq(true)
     expect(StringInFile.present("rails console --sandbox", "#{dir_app_2}/sandbox.sh")).to eq(true)
     expect(StringInFile.present("rake db:seed", "#{dir_app_2}/seed.sh")).to eq(true)
     expect(StringInFile.present("rails server -b 0.0.0.0", "#{dir_app_2}/server.sh")).to eq(true)

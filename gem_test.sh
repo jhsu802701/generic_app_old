@@ -48,8 +48,11 @@ echo
 echo '***********************************'
 echo 'The locations of the test logs are:'
 echo "GEM TEST: $DIR_GENERIC_APP/log/generic_app.txt"
-echo "TEST 1 (new app): $DIR_GENERIC_APP/log/tmp1.txt"
-echo "TEST 2 (legacy app): $DIR_GENERIC_APP/log/tmp2.txt"
+echo "TEST 1A (new app): $DIR_GENERIC_APP/log/tmp1A.txt"
+echo "TEST 1B (new app): $DIR_GENERIC_APP/log/tmp1B.txt"
+echo "TEST 2A (legacy app): $DIR_GENERIC_APP/log/tmp2A.txt"
+echo "TEST 2B (legacy app): $DIR_GENERIC_APP/log/tmp2B.txt"
 echo
-echo "If all went well, the results at the end of each test show 0 or 31m0 failures and 0 errors."
+echo "If all went well, the results at the end of tests 1A and 2A show 0 or 31m0 failures and 0 errors."
+echo 'Test 2B may show vulnerabilities in some gems.  This is normal for the legacy app.'
 echo

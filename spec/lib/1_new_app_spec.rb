@@ -23,7 +23,7 @@ describe GenericApp do
   it "Bash scripts should be provided" do
     expect(StringInFile.present("heroku run rake db:migrate", "#{dir_app_1}/heroku_upload.sh")).to eq(true)
     expect(StringInFile.present("pkill", "#{dir_app_1}/kill_spring.sh")).to eq(true)
-    expect(StringInFile.present("ls -R1 -I concerns app/controllers", "#{dir_app_1}/list_files.sh")).to eq(true)
+    expect(StringInFile.present("ls -R1 -I concerns app/controllers", "#{dir_app_1}/outline.sh")).to eq(true)
     expect(StringInFile.present("rails console --sandbox", "#{dir_app_1}/sandbox.sh")).to eq(true)
     expect(StringInFile.present("rake db:seed", "#{dir_app_1}/seed.sh")).to eq(true)
     expect(StringInFile.present("rails server -b 0.0.0.0", "#{dir_app_1}/server.sh")).to eq(true)
@@ -31,7 +31,7 @@ describe GenericApp do
   end
   
   it "New README.md file should be provided" do
-    expect(StringInFile.present("list_files.sh", "#{dir_app_1}/README.md")).to eq(true)
+    expect(StringInFile.present("outline.sh", "#{dir_app_1}/README.md")).to eq(true)
   end
   
   it "Guardfile should be set to automatically run tests upon startup" do
@@ -60,7 +60,6 @@ describe GenericApp do
 
   it "The notes/1-file_list-misc.txt file should be in place" do
     expect(StringInFile.present("application_helper.rb", "#{dir_app_1}/notes/1-file_list-misc.txt")).to eq(true)
-    expect(StringInFile.present("users_helper.rb", "#{dir_app_1}/notes/1-file_list-misc.txt")).to eq(true)
   end
   
   it "The notes/1-file_list-models.txt file should be in place" do
