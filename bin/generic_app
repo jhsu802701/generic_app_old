@@ -32,7 +32,7 @@ GenericApp.create_new(subdir_name, email)
 
 puts '*********************************************'
 puts "BEGIN TESTING THE #{subdir_name} RAILS APP"
-system("cd #{subdir_name} && sh test_app.sh")
+system("cd #{subdir_name} && sh build_fast.sh")
 puts "FINISHED TESTING THE #{subdir_name} RAILS APP"
 puts '*********************************************'
 

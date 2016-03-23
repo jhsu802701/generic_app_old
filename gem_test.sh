@@ -15,21 +15,19 @@ rake 2>&1 | tee $DIR_GENERIC_APP/log/generic_app.txt
 echo 'FINISHED TESTING generic_app'
 echo '****************************'
 echo ''
-echo '*************'
-echo 'BEGIN TEST 1A'
-echo 'Creating new Rails app'
+echo '************************************'
+echo 'BEGIN TEST 1A: SQLite, build_fast.sh'
 cd $DIR_PARENT/tmp1 && spring stop 
-cd $DIR_PARENT/tmp1 && sh test_app.sh 2>&1 | tee $DIR_GENERIC_APP/log/tmp1A.txt 
+cd $DIR_PARENT/tmp1 && sh build_fast.sh 2>&1 | tee $DIR_GENERIC_APP/log/tmp1A.txt 
 echo 'FINISHED TEST1A'
 echo '***************'
 echo ''
-echo '*************'
-echo 'BEGIN TEST 1B'
+echo '***********************************'
+echo 'BEGIN TEST 1B: SQLite, test_code.sh'
 echo 'Creating new Rails app'
 cd $DIR_PARENT/tmp1 && sh test_code.sh 2>&1 | tee $DIR_GENERIC_APP/log/tmp1B.txt 
 echo 'FINISHED TEST 1B'
 echo '****************'
-echo ''
 
 echo
 echo '***********************************'
