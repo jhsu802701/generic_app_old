@@ -8,12 +8,10 @@
 # GenericApp
 
 Welcome to GenericApp, the #1 Rails app generator!  No other method of starting a Rails app can save you so much time and effort.  Stop reinventing the wheel every time you start a new Rails project.  User authentication, comprehensive tests, Guard automation, Twitter bootstrap styling, and other features that are desirable in all or most Rails apps are implemented in advance.  You get post-installation scripts that consolidate routine multi-step tasks into one step, including the process of setting up your app for PostgreSQL.  Outlines of the initial MVC architecture of your new app are also provided.  Only GenericApp way gives you a comprehensive Rails app in just a few minutes.  If you're not exactly a GenericApp user, then you're not exactly viable at Startup Weekend or 24-hour web site challenges.
-<br><br>
-GenericApp also works for legacy Rails apps.  You can incorporate GenericApp's post-installation scripts into a legacy Rails app, including the PostgreSQL setup script and a script that prints out a list of all of the directories and files most relevant to the MVC architecture.
 
 ## Prerequisites
 
-You must have not only Ruby on Rails installed but SQLite and PostgreSQL installed as well.  Everything you need to use the GenericApp gem is pre-installed in my Debian Stable Vagrant Box for Ruby On Rails ( https://github.com/jhsu802701/vagrant-debian-jessie-rvm ).
+You must have not only Ruby on Rails installed but SQLite and PostgreSQL installed as well.  Everything you need to use the GenericApp gem is pre-installed in my Debian Stable Docker image for Ruby On Rails ( https://github.com/jhsu802701/vagrant-debian-jessie-rvm ).
 
 ## Installation
 
@@ -28,10 +26,6 @@ Install the GenericApp gem with the command:
 Go to the directory where you keep your Rails projects and enter the command "generic_app".  You will be asked to select the name of the directory you wish to use for your Rails project.
 <br><br>
 After you have provided all of the necessary parameters, your generic Rails project will not only be created for you but automatically tested as well.  This takes a few minutes instead of several long and grueling hours.
-
-### Adding Generic App Features To An Existing Project
-
-Go to the parent of the app's root directory.  Enter the command "generic_app_add".  You will be shown a list of all sub-directories within your present working directory.  Pick the sub-directory corresponding to your target app.  The Bash scripts and the list of directories and files within the project will be added.  Please note that you may need to revise some of the scripts provided by GenericApp, which is designed around the railstutorial.org Sample App.
 
 ## What's the point?
 
