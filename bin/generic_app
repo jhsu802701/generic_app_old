@@ -4,10 +4,10 @@ require 'generic_app'
 
 def get_input(default_value)
   value_input = gets.chomp
-  if value_input == ""
-    return default_value
+  if value_input == ''
+    default_value
   else
-    return value_input
+    value_input
   end
 end
 
