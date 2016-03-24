@@ -20,6 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rspec'
+  spec.add_development_dependency 'rubocop'
 
   spec.add_runtime_dependency 'string_in_file'
   spec.add_runtime_dependency 'line_containing'
