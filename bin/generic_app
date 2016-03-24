@@ -41,6 +41,6 @@ puts 'It is currently configured to use the SQLite database in the'
 puts 'development environment.'
 puts 'To set up the PostgreSQL database, enter the'
 puts "#{ENV['PWD']}/#{subdir_name} directory and enter the command"
-puts 'sh setup-pg.sh .'
+puts 'sh pg-setup.sh .'
 puts 'Please note that the rails, pg, and nokogiri gems may be outdated.'
 puts 'You should update these gem versions in the Gemfile.'
