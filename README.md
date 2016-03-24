@@ -11,7 +11,7 @@ Welcome to GenericApp, the #1 Rails app generator!  No other method of starting 
 
 ## Prerequisites
 
-You must have not only Ruby on Rails installed but SQLite and PostgreSQL installed as well.  Everything you need to use the GenericApp gem is pre-installed in my Debian Stable Docker image for Ruby On Rails ( https://github.com/jhsu802701/vagrant-debian-jessie-rvm ).
+You must have not only Ruby on Rails installed but SQLite and PostgreSQL installed as well.  Everything you need to use the GenericApp gem is pre-installed in my general purpose Debian Stable Docker image (rbenv-general) for Ruby On Rails.  The URLs for using my Docker images are on my [Ruby on Rails cheat sheet] (https://gist.github.com/jhsu802701/8c81cbfdf3136b1c0387).
 
 ## Installation
 
@@ -29,22 +29,16 @@ After you have provided all of the necessary parameters, your generic Rails proj
 
 ## What's the point?
 
-Welcome to Ruby On HIGH SPEED Rails!  The GenericApp gem saves you time by automatically providing the basic 
-elements and features that nearly all Rails apps require.  Instead of spending hours reinventing the wheel, you 
-can spend more of your time on the more advanced features and capabilities that are unique to your specific Rails 
-app.  Modifying a generic app takes far less time than creating an app completely from scratch.
+Welcome to Ruby On Racetracks!  The GenericApp gem saves you time by automatically providing the basic elements and features that nearly all Rails apps require.  Instead of spending hours reinventing the wheel, you can spend more of your time on the more advanced features and capabilities that are unique to your specific Rails app.  Modifying a generic app takes far less time than creating an app completely from scratch.
 <br><br>
-Creating a basic generic web site with user authentication and testing is a long and slow process that spans chapters 
-3 through 10 in railstutorial.org.  The GenericApp Ruby gem allows you to create such a site in minutes instead of 
-hours.  This is valuable for any project and essential for events like Startup Weekend and 24-hour website 
-challenges.
+Creating a basic generic web site with user authentication and testing is a long and slow process that spans chapters 3 through 10 in railstutorial.org.  The GenericApp Ruby gem allows you to create such a site in minutes instead of hours.  This is valuable for any project and essential for events like Startup Weekend and 24-hour website challenges.
 <br><br>
-The GenericApp gem copies the GenericApp Template (https://github.com/jhsu802701/generic_app_template) for use as a template for starting a new project.  Starting a Rails app completely from scratch (by using the "rails new" command) requires manually installing and configuring MiniTest, Guard, Twitter bootstrap, the user model, user sign-ups, user login/logout, user authorization, administrative users, account activations, and password resets.  People are often tempted to "save time" by omitting testing.  Using the GenericApp gem allows you to have all of the essential basic elements of a generic app as soon as you start it.  It's a shortcut that actually complies with best practices.
+The GenericApp gem copies the GenericApp Template (https://github.com/jhsu802701/generic_app_template) for use as a template for starting a new project.  Starting a Rails app completely from scratch (by using the "rails new" command) requires manually installing and configuring MiniTest, Guard, Twitter bootstrap, the user model, user sign-ups, user login/logout, user authorization, administrative users, account activations, and password resets.  People are often tempted to "save time" by omitting testing.  Using the GenericApp gem allows you to have all of the essential basic elements of a generic app as soon as you start it.  It's a shortcut that actually complies with best practices and improves quality.  You can use the time you save to create a better app or to move on to other projects sooner.
 
 ## Development
 
 ### Testing GenericApp
-Download this GitHub repository, cd into the source code, and enter the command "sh gem_test.sh".  The screen output is saved to the log files in the log directory.  If all goes well, every test is completed with 0 or 31m0 failures and 0 errors.
+Download this GitHub repository, cd into the source code, and enter the command "sh gem_test.sh".  The screen output is saved to the log files in the log directory.  If all goes well, every test is completed with 0 failures and 0 errors.  Please note that bundle-audit will flag the outdated gems that result from using the old versions of the rails, pg, and nokogiri gems from the Rails Tutorial Sample App.  You should update the Gemfile to the newer versions of these gems available in the rbenv-general version of the Docker image.
 
 ## Contributing
 
