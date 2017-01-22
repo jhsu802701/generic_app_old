@@ -25,10 +25,6 @@ describe GenericApp do
     expect(StringInFile.present('outline.sh', "#{dir_app_1}/README.md")).to eq(true)
   end
 
-  it 'Guardfile should be set to automatically run tests upon startup' do
-    expect(StringInFile.present('all_on_start: true', "#{dir_app_1}/Guardfile")).to eq(true)
-  end
-
   it 'The .gitignore file includes tmp, tmp*, and ,DS_Store' do
     expect(StringInFile.present('tmp', "#{dir_app_1}/.gitignore")).to eq(true)
     expect(StringInFile.present('tmp*', "#{dir_app_1}/.gitignore")).to eq(true)
