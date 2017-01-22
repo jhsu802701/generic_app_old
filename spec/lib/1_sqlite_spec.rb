@@ -21,16 +21,6 @@ describe GenericApp do
     expect(StringInFile.present('007@railstutorial.org', "#{dir_app_1}/app/views/static_pages/contact.html.erb")).to eq(true)
   end
 
-  it 'Bash scripts should be provided' do
-    expect(StringInFile.present('heroku run rake db:migrate', "#{dir_app_1}/heroku_upload.sh")).to eq(true)
-    expect(StringInFile.present('pkill', "#{dir_app_1}/kill_spring.sh")).to eq(true)
-    expect(StringInFile.present('tree app/controllers', "#{dir_app_1}/outline.sh")).to eq(true)
-    expect(StringInFile.present('rails console --sandbox', "#{dir_app_1}/sandbox.sh")).to eq(true)
-    expect(StringInFile.present('rake db:seed', "#{dir_app_1}/seed.sh")).to eq(true)
-    expect(StringInFile.present('rails server -b 0.0.0.0', "#{dir_app_1}/server.sh")).to eq(true)
-    expect(StringInFile.present('bundle install', "#{dir_app_1}/build_fast.sh")).to eq(true)
-  end
-
   it 'New README.md file should be provided' do
     expect(StringInFile.present('outline.sh', "#{dir_app_1}/README.md")).to eq(true)
   end
