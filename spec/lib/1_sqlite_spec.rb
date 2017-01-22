@@ -25,15 +25,6 @@ describe GenericApp do
     expect(StringInFile.present('outline.sh', "#{dir_app_1}/README.md")).to eq(true)
   end
 
-  it 'The .gitignore file includes tmp, tmp*, and ,DS_Store' do
-    expect(StringInFile.present('tmp', "#{dir_app_1}/.gitignore")).to eq(true)
-    expect(StringInFile.present('tmp*', "#{dir_app_1}/.gitignore")).to eq(true)
-    expect(StringInFile.present('.DS_Store', "#{dir_app_1}/.gitignore")).to eq(true)
-    expect(StringInFile.present('notes/*.dot', "#{dir_app_1}/.gitignore")).to eq(true)
-    expect(StringInFile.present('notes/*.svg', "#{dir_app_1}/.gitignore")).to eq(true)
-    expect(StringInFile.present('gemsurance_report.html', "#{dir_app_1}/.gitignore")).to eq(true)
-  end
-
   it 'The notes/1-file_list-controllers.txt file should be in place' do
     expect(StringInFile.present('users_controller_test.rb', "#{dir_app_1}/notes/1-file_list-controllers.txt")).to eq(true)
     expect(StringInFile.present('users_controller.rb', "#{dir_app_1}/notes/1-file_list-controllers.txt")).to eq(true)
