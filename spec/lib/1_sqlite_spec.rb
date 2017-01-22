@@ -18,6 +18,7 @@ describe GenericApp do
 
   it 'Email address should be updated' do
     expect(StringInFile.present('007@railstutorial.org', "#{dir_app_1}/config/initializers/devise.rb")).to eq(true)
+    expect(StringInFile.present('007@railstutorial.org', "#{dir_app_1}/app/views/static_pages/contact.html.erb")).to eq(true)
   end
 
   it 'Bash scripts should be provided' do
