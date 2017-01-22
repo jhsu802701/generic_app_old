@@ -2,6 +2,8 @@ require 'spec_helper'
 require 'generic_app'
 require 'string_in_file'
 
+ENV['DIR_MAIN'] = File.expand_path('../../', __FILE__)
+ENV['DIR_PARENT'] = File.expand_path('../../../', __FILE__)
 dir_app_1 = "#{ENV['DIR_PARENT']}/tmp1"
 
 describe GenericApp do
