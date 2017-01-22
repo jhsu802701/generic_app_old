@@ -24,26 +24,4 @@ describe GenericApp do
   it 'New README.md file should be provided' do
     expect(StringInFile.present('outline.sh', "#{dir_app_1}/README.md")).to eq(true)
   end
-
-  it 'The notes/1-file_list-controllers.txt file should be in place' do
-    expect(StringInFile.present('users_controller_test.rb', "#{dir_app_1}/notes/1-file_list-controllers.txt")).to eq(true)
-    expect(StringInFile.present('users_controller.rb', "#{dir_app_1}/notes/1-file_list-controllers.txt")).to eq(true)
-    expect(StringInFile.present('confirmations_controller.rb', "#{dir_app_1}/notes/1-file_list-controllers.txt")).to eq(true)
-    expect(StringInFile.present('omniauth_callbacks_controller.rb', "#{dir_app_1}/notes/1-file_list-controllers.txt")).to eq(true)
-    expect(StringInFile.present('passwords_controller.rb', "#{dir_app_1}/notes/1-file_list-controllers.txt")).to eq(true)
-    expect(StringInFile.present('registrations_controller.rb', "#{dir_app_1}/notes/1-file_list-controllers.txt")).to eq(true)
-    expect(StringInFile.present('sessions_controller.rb', "#{dir_app_1}/notes/1-file_list-controllers.txt")).to eq(true)
-    expect(StringInFile.present('unlocks_controller.rb', "#{dir_app_1}/notes/1-file_list-controllers.txt")).to eq(true)
-  end
-
-  it 'The notes/1-file_list-misc.txt file should be in place' do
-    expect(StringInFile.present('application_helper.rb', "#{dir_app_1}/notes/1-file_list-helpers.txt")).to eq(true)
-  end
-
-  it 'The notes/1-file_list-models.txt file should be in place' do
-    expect(StringInFile.present('admin_test.rb', "#{dir_app_1}/notes/1-file_list-models.txt")).to eq(true)
-    expect(StringInFile.present('user_test.rb', "#{dir_app_1}/notes/1-file_list-models.txt")).to eq(true)
-    expect(StringInFile.present('admin.rb', "#{dir_app_1}/notes/1-file_list-models.txt")).to eq(true)
-    expect(StringInFile.present('user.rb', "#{dir_app_1}/notes/1-file_list-models.txt")).to eq(true)
-  end
 end
