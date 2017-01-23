@@ -2,7 +2,6 @@ require 'spec_helper'
 require 'generic_app'
 require 'string_in_file'
 
-dir_main = File.expand_path('../../../', __FILE__)
 dir_parent = File.expand_path('../../../../', __FILE__)
 dir_app_1 = "#{dir_parent}/tmp1"
 

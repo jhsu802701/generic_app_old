@@ -11,3 +11,6 @@ Metrics/MethodLength:
 Style/RedundantSelf:
   Exclude:
     - lib/generic_app.rb
+
+Style/VariableNumber:
+  Enabled: false
