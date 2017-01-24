@@ -36,7 +36,8 @@ system("cd #{subdir_name} && sh all.sh")
 puts "FINISHED TESTING AND SEEDING THE #{subdir_name} RAILS APP"
 puts '*********************************************************'
 
-puts "Your new Rails app has been created, tested, and seeded at #{ENV['PWD']}/#{subdir_name} ."
+puts 'Your new Rails app has been created, tested, outlined and seeded at'
+puts "#{ENV['PWD']}/#{subdir_name} ."
 puts 'It is currently configured to use the SQLite database in the'
 puts 'development environment.'
 puts 'To set up the PostgreSQL database, enter the'

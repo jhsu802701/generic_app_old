@@ -1,3 +1,7 @@
+AllCops:
+  Exclude:
+    - tmp/vulnerabilities/spec/*
+
 Metrics/BlockLength:
   Exclude:
     - spec/lib/generic_app_spec.rb
