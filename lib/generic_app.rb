@@ -30,8 +30,10 @@ module GenericApp
     email_orig = 'somebody@rubyonracetracks.com'
     path_of_email_1 = "#{subdir_name}/config/initializers/devise.rb"
     path_of_email_2 = "#{subdir_name}/app/views/static_pages/contact.html.erb"
+    path_of_email_3 = "#{subdir_name}/test/integration/static_pages_test.rb"
     StringInFile.replace(email_orig, email, path_of_email_1)
     StringInFile.replace(email_orig, email, path_of_email_2)
+    StringInFile.replace(email_orig, email, path_of_email_3)
   end
 
   def self.remove_badges(subdir_name)
