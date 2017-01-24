@@ -2,7 +2,7 @@ Metrics/LineLength:
   Exclude:
     - generic_app.gemspec
     - lib/generic_app.rb
-    - spec/lib/1_sqlite_spec.rb
+    - spec/lib/generic_app_spec.rb
 
 Metrics/MethodLength:
   Exclude:
