@@ -30,13 +30,14 @@ email = get_input(default_email)
 
 GenericApp.create_new(subdir_name, email)
 
-puts '*********************************************'
-puts "BEGIN TESTING THE #{subdir_name} RAILS APP"
-system("cd #{subdir_name} && sh build_fast.sh")
-puts "FINISHED TESTING THE #{subdir_name} RAILS APP"
-puts '*********************************************'
+puts '******************************************************'
+puts "BEGIN TESTING AND SEEDING THE #{subdir_name} RAILS APP"
+system("cd #{subdir_name} && sh all.sh")
+puts "FINISHED TESTING AND SEEDING THE #{subdir_name} RAILS APP"
+puts '*********************************************************'
 
-puts "Your new Rails app has been created at #{ENV['PWD']}/#{subdir_name} ."
+puts 'Your new Rails app has been created, tested, outlined and seeded at'
+puts "#{ENV['PWD']}/#{subdir_name} ."
 puts 'It is currently configured to use the SQLite database in the'
 puts 'development environment.'
 puts 'To set up the PostgreSQL database, enter the'
@@ -44,3 +45,7 @@ puts "#{ENV['PWD']}/#{subdir_name} directory and enter the command"
 puts 'sh pg-setup.sh .'
 puts 'Please note that the rails, pg, and nokogiri gems may be outdated.'
 puts 'You should update these gem versions in the Gemfile.'
+puts
+puts 'There is a list of things to do at'
+puts "#{ENV['PWD']}/#{subdir_name}/README-to_do.txt"
+puts
