@@ -17,6 +17,10 @@ describe GenericApp do
     end
   end
 
+  it 'config/heroku_name.txt should be removed' do
+    expect(File.exist?("#{dir_app_1}/config/heroku_name.txt")).to eq(false)
+  end
+
   it 'Email address should be updated' do
     expect(StringInFile.present('007@railstutorial.org', "#{dir_app_1}/config/initializers/devise.rb")).to eq(true)
     expect(StringInFile.present('007@railstutorial.org', "#{dir_app_1}/app/views/static_pages/contact.html.erb")).to eq(true)

@@ -14,9 +14,14 @@ module GenericApp
   def self.create_new(subdir_name, email)
     t1 = Thread.new { self.git_clone(subdir_name) }
     t1.join
+    self.remove_heroku_name(subdir_name)
     self.email_update(subdir_name, email)
     self.remove_badges(subdir_name)
     self.git_init(subdir_name)
+  end
+
+  def self.remove_heroku_name(subdir_name)
+    File.delete("#{subdir_name}/config/heroku_name.txt")
   end
 
   def self.git_clone(subdir_name)
