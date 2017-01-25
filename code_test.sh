@@ -30,6 +30,6 @@ gemsurance --output log/gemsurance_report.html
 echo 'Gemsurance Report: log/gemsurance_report.html'
 
 echo '------------------------------------------------------------------------'
-echo 'bundle viz --file=log/diagram-gems --format=svg --requirements --version'
-bundle viz --file=log/diagram-gems --format=svg --requirements --version
-echo 'Gem dependency diagram: log/diagram-gems.svg'
+echo 'bundle viz --file=log/diagram-gems --format=jpg --requirements --version'
+bundle viz --file=log/diagram-gems --format=jpg --requirements --version
+echo 'Gem dependency diagram: log/diagram-gems.jpg'
