@@ -12,3 +12,7 @@ bin/setup >/dev/null
 echo '===='
 echo 'rake'
 rake
+
+echo '=========='
+echo 'rubocop -D'
+rubocop -D
