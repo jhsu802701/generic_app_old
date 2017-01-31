@@ -35,19 +35,14 @@ title = get_input(default_title)
 
 GenericApp.create_new(subdir_name, email, title)
 
-puts '******************************************************'
-puts "BEGIN TESTING AND SEEDING THE #{subdir_name} RAILS APP"
-system("cd #{subdir_name} && sh all.sh")
-puts "FINISHED TESTING AND SEEDING THE #{subdir_name} RAILS APP"
-puts '*********************************************************'
-
-puts 'Your new Rails app has been created, tested, outlined and seeded at'
+puts 'Your new Rails app has been created at'
 puts "#{ENV['PWD']}/#{subdir_name} ."
 puts ''
 puts 'Enter the following commands:'
 puts "cd #{subdir_name}"
 puts 'git commit -m "Initial commit"'
 puts
-puts 'There is a list of things to do at'
-puts "#{ENV['PWD']}/#{subdir_name}/README-to_do.txt"
+puts 'Use the all.sh script to test, outline, and seed your app.'
+puts
+puts 'There is a list of things to do in the README-to_do.txt file.'
 puts
