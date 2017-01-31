@@ -11,12 +11,13 @@ DIR_PARENT = File.expand_path('../../../', __FILE__)
 #
 module GenericApp
   # Create app, stick with SQLite database in development
-  def self.create_new(subdir_name, email)
+  def self.create_new(subdir_name, email, title)
     t1 = Thread.new { self.git_clone(subdir_name) }
     t1.join
     self.remove_heroku_name(subdir_name)
     self.email_update(subdir_name, email)
     self.remove_badges(subdir_name)
+    self.update_titles(subdir_name, title)
     self.git_init(subdir_name)
   end
 
@@ -51,12 +52,26 @@ module GenericApp
     RemoveDoubleBlank.update(path_readme)
   end
 
+  def self.update_titles(subdir_name, title)
+    array_files = []
+    array_files << "#{subdir_name}/README.md"
+    array_files << "#{subdir_name}/app/helpers/application_helper.rb"
+    array_files << "#{subdir_name}/app/views/layouts/_footer.html.erb"
+    array_files << "#{subdir_name}/app/views/static_pages/home.html.erb"
+    array_files << "#{subdir_name}/test/helpers/application_helper_test.rb"
+    array_files << "#{subdir_name}/test/integration/static_pages_test.rb"
+
+    array_files.each do |f|
+      StringInFile.replace('Generic App Template', title, f)
+      StringInFile.replace('GENERIC APP TEMPLATE', title, f)
+    end
+  end
+
   def self.git_init(subdir_name)
-    puts '----------------'
-    puts 'Initializing Git'
+    puts '-----------------------'
+    puts 'Removing old Git record'
     system("cd #{subdir_name} && rm -rf .git")
     system("cd #{subdir_name} && git init")
     system("cd #{subdir_name} && git add .")
-    system("cd #{subdir_name} && git commit -m 'Initial commit' >/dev/null")
   end
 end
