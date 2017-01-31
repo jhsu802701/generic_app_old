@@ -13,7 +13,7 @@ describe GenericApp do
     puts 'New Rails app'
     system("rm -rf #{dir_app_1}")
     Dir.chdir(dir_parent) do
-      GenericApp.create_new('tmp1', '007@railstutorial.org')
+      GenericApp.create_new('tmp1', '007@railstutorial.org', 'Your New App')
     end
   end
 
@@ -35,7 +35,19 @@ describe GenericApp do
     expect(StringInFile.present('[Code Climate]', "#{dir_app_1}/README.md")).to eq(false)
   end
 
-  it 'New README.md file should be provided' do
-    expect(StringInFile.present('Generic App Template', "#{dir_app_1}/README.md")).to eq(true)
+  it 'The specified app title should be provided in place of "Generic App Template"' do
+    array_files = []
+    array_files << "#{dir_app_1}/README.md"
+    array_files << "#{dir_app_1}/app/helpers/application_helper.rb"
+    array_files << "#{dir_app_1}/app/views/layouts/_footer.html.erb"
+    array_files << "#{dir_app_1}/app/views/static_pages/home.html.erb"
+    array_files << "#{dir_app_1}/test/helpers/application_helper_test.rb"
+    array_files << "#{dir_app_1}/test/integration/static_pages_test.rb"
+
+    array_files.each do |f|
+      expect(StringInFile.present('Generic App Template', f)).to eq(false)
+      expect(StringInFile.present('GENERIC APP TEMPLATE', f)).to eq(false)
+      expect(StringInFile.present('Your New App', f)).to eq(true)
+    end
   end
 end
