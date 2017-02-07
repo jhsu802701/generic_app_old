@@ -10,9 +10,9 @@ echo 'bundle install'
 bin/setup >/dev/null
 
 echo
-echo '----------'
-echo 'rubocop -D'
-rubocop -D
+echo '----------------------'
+echo 'bundle exec rubocop -D'
+bundle exec rubocop -D
 
 echo
 echo '-----------'
