@@ -15,11 +15,6 @@ echo 'bundle exec rubocop -D'
 bundle exec rubocop -D
 
 echo
-echo '-----------'
-echo 'sandi_meter'
-sandi_meter
-
-echo
 echo '------------'
 echo 'bundle-audit'
 bundle-audit
