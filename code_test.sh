@@ -15,9 +15,9 @@ echo 'bundle exec rubocop -D'
 bundle exec rubocop -D
 
 echo
-echo '------------'
-echo 'bundle-audit'
-bundle-audit
+echo '------------------------'
+echo 'bundle exec bundle-audit'
+bundle exec bundle-audit
 
 echo '----------------------------------------------'
 echo 'gemsurance --output log/gemsurance_report.html'
