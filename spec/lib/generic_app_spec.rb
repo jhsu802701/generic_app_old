@@ -39,6 +39,7 @@ describe GenericApp do
     array_files = []
     array_files << "#{dir_app_1}/README.md"
     array_files << "#{dir_app_1}/app/helpers/application_helper.rb"
+    array_files << "#{dir_app_1}/app/views/layouts/_header.html.erb"
     array_files << "#{dir_app_1}/app/views/layouts/_footer.html.erb"
     array_files << "#{dir_app_1}/app/views/static_pages/home.html.erb"
     array_files << "#{dir_app_1}/test/helpers/application_helper_test.rb"

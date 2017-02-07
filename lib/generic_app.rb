@@ -56,6 +56,7 @@ module GenericApp
     array_files = []
     array_files << "#{subdir_name}/README.md"
     array_files << "#{subdir_name}/app/helpers/application_helper.rb"
+    array_files << "#{subdir_name}/app/views/layouts/_header.html.erb"
     array_files << "#{subdir_name}/app/views/layouts/_footer.html.erb"
     array_files << "#{subdir_name}/app/views/static_pages/home.html.erb"
     array_files << "#{subdir_name}/test/helpers/application_helper_test.rb"

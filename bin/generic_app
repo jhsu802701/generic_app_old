@@ -37,12 +37,6 @@ GenericApp.create_new(subdir_name, email, title)
 
 puts 'Your new Rails app has been created at'
 puts "#{ENV['PWD']}/#{subdir_name} ."
-puts ''
-puts 'Enter the following commands:'
-puts "cd #{subdir_name}"
-puts 'git commit -m "Initial commit"'
 puts
-puts 'Use the all.sh script to test, outline, and seed your app.'
-puts
-puts 'There is a list of things to do in the README-to_do.txt file.'
+puts 'Go to the README-to_do.txt file for further instructions.'
 puts

@@ -13,6 +13,6 @@ echo '===='
 echo 'rake'
 rake
 
-echo '=========='
-echo 'rubocop -D'
-rubocop -D
+echo '======================'
+echo 'bundle exec rubocop -D'
+bundle exec rubocop -D
