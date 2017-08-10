@@ -17,6 +17,10 @@ describe GenericApp do
     end
   end
 
+  it 'The neutrino.sh script should be removed' do
+    expect(File.exist?("#{dir_app_1}/neutrino.sh")).to eq(false)
+  end
+
   it 'config/heroku_name.txt should be removed' do
     expect(File.exist?("#{dir_app_1}/config/heroku_name.txt")).to eq(false)
   end
@@ -28,11 +32,10 @@ describe GenericApp do
   end
 
   it 'Badges should be removed from README.md' do
-    expect(StringInFile.present('continuous integration badges', "#{dir_app_1}/README.md")).to eq(false)
-    expect(StringInFile.present('[CircleCI]', "#{dir_app_1}/README.md")).to eq(false)
-    expect(StringInFile.present('[Dependency Status]', "#{dir_app_1}/README.md")).to eq(false)
-    expect(StringInFile.present('[security]', "#{dir_app_1}/README.md")).to eq(false)
-    expect(StringInFile.present('[Code Climate]', "#{dir_app_1}/README.md")).to eq(false)
+    expect(StringInFile.present('[![CircleCI](https://circleci.com', "#{dir_app_1}/README.md")).to eq(false)
+    expect(StringInFile.present('[![Dependency Status](https://gemnasium.com', "#{dir_app_1}/README.md")).to eq(false)
+    expect(StringInFile.present('[![security](https://hakiri.io', "#{dir_app_1}/README.md")).to eq(false)
+    expect(StringInFile.present('[![Code Climate](https://codeclimate.com', "#{dir_app_1}/README.md")).to eq(false)
   end
 
   it 'The specified app title should be provided in place of "Generic App Template"' do

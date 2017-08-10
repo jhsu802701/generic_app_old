@@ -1,5 +1,3 @@
-#!/usr/bin/ruby
-
 require 'generic_app/version'
 require 'string_in_file'
 require 'line_containing'
@@ -14,6 +12,7 @@ module GenericApp
   def self.create_new(subdir_name, email, title)
     t1 = Thread.new { self.git_clone(subdir_name) }
     t1.join
+    self.remove_neutrino(subdir_name)
     self.remove_heroku_name(subdir_name)
     self.email_update(subdir_name, email)
     self.remove_badges(subdir_name)
@@ -25,10 +24,18 @@ module GenericApp
     File.delete("#{subdir_name}/config/heroku_name.txt")
   end
 
+  def self.remove_neutrino(subdir_name)
+    File.delete("#{subdir_name}/neutrino.sh")
+  end
+
   def self.git_clone(subdir_name)
+    puts '-------------------------------------------'
+    puts 'Getting the URL of the Generic App Template'
+    system('git clone https://github.com/jhsu802701/generic_app_template_url.git')
+    url_template = StringInFile.read('generic_app_template_url/rails5.txt')
+    system('rm -rf generic_app_template_url')
     puts '------------------------------------'
     puts 'Downloading the Generic App Template'
-    url_template = StringInFile.read("#{DIR_MAIN}/lib/generic_app/git_clone_url.txt")
     system("git clone #{url_template} #{subdir_name}")
   end
 
@@ -44,11 +51,10 @@ module GenericApp
 
   def self.remove_badges(subdir_name)
     path_readme = "#{subdir_name}/README.md"
-    line1 = 'BEGIN: continuous integration badges'
-    line2 = 'END: continuous integration badges'
-    LineContaining.delete_between(line1, line2, path_readme)
-    LineContaining.delete(line1, path_readme)
-    LineContaining.delete(line2, path_readme)
+    LineContaining.delete('[![CircleCI](https://circleci.com', path_readme)
+    LineContaining.delete('[![Dependency Status](https://gemnasium.com', path_readme)
+    LineContaining.delete('[![security](https://hakiri.io', path_readme)
+    LineContaining.delete('[![Code Climate](https://codeclimate.com', path_readme)
     RemoveDoubleBlank.update(path_readme)
   end
 
