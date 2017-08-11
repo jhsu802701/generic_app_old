@@ -1,3 +1,5 @@
+URL_TEMPLATE = 'https://github.com/jhsu802701/rails-20170811-165620-143.git'.freeze
+
 require 'generic_app/version'
 require 'string_in_file'
 require 'line_containing'
@@ -18,6 +20,7 @@ module GenericApp
     self.remove_badges(subdir_name)
     self.update_titles(subdir_name, title)
     self.git_init(subdir_name)
+    self.print_end_msg(subdir_name)
   end
 
   def self.remove_heroku_name(subdir_name)
@@ -29,14 +32,9 @@ module GenericApp
   end
 
   def self.git_clone(subdir_name)
-    puts '-------------------------------------------'
-    puts 'Getting the URL of the Generic App Template'
-    system('git clone https://github.com/jhsu802701/generic_app_template_url.git')
-    url_template = StringInFile.read('generic_app_template_url/rails5.txt')
-    system('rm -rf generic_app_template_url')
     puts '------------------------------------'
     puts 'Downloading the Generic App Template'
-    system("git clone #{url_template} #{subdir_name}")
+    system("git clone #{URL_TEMPLATE} #{subdir_name}")
   end
 
   def self.email_update(subdir_name, email)
@@ -80,5 +78,16 @@ module GenericApp
     system("cd #{subdir_name} && rm -rf .git")
     system("cd #{subdir_name} && git init")
     system("cd #{subdir_name} && git add .")
+  end
+
+  def self.print_end_msg(subdir_name)
+    puts '-------------------------'
+    puts 'Rails Neutrino timestamp:'
+    system("cd #{subdir_name} && cat config/rails_neutrino_timestamp.txt")
+    puts ''
+    puts "Your new app is at #{subdir_name}"
+    puts ''
+    puts 'Instructions on how to get started are in the file'
+    puts 'README-to_do.txt within your new app.'
   end
 end
